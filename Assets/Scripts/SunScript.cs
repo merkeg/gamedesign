@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SunScript : MonoBehaviour
 {
+    private VignetteInterface vignette;
     // Start is called before the first frame update
     void Start()
     {
+        this.vignette = FindObjectOfType<VignetteInterface>();
 
     }
 
@@ -20,7 +22,8 @@ public class SunScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            this.vignette.AddVignetteValue(-0.75f);
+            GameObject.Destroy(this.gameObject);
         }
     }
 }

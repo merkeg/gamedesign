@@ -8,7 +8,7 @@ public class VignetteInterface : MonoBehaviour
 {
     public VolumeProfile VolumeProfile;
     private Vignette _vignette;
-    
+
     void Start()
     {
         VolumeProfile.TryGet<Vignette>(out _vignette);
@@ -36,8 +36,13 @@ public class VignetteInterface : MonoBehaviour
     {
         _vignette.color.value = color;
     }
-    
-    
 
-    
+    public float GetIntensity()
+    {
+        return this._vignette.intensity.value;
+    }
+
+
+
+
 }

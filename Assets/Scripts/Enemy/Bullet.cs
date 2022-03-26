@@ -9,13 +9,13 @@ namespace Enemy
 
         private Collider2D _collider;
         private Rigidbody2D _rigidbody;
-        
+
         public Direction Direction = Direction.Right;
-        
+
         [Range(0.5f, 10f)]
         public float SpeedMultiplier = 1;
-        
-        
+
+
         private void Start()
         {
             _collider = GetComponent<CircleCollider2D>();
@@ -40,7 +40,6 @@ namespace Enemy
             Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (damageable != null)
             {
-                Debug.Log("Do Damage");
                 damageable.TakeDamage();
             }
             Destroy(gameObject);

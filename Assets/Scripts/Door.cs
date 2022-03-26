@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Door : MonoBehaviour
         {
             if (GameManager.Instance.featherCount >= 2)
             {
-                // Hier mach Win Screen
+                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
             }
         }
     }
