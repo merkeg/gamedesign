@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("JumpAndGlide")]
     public float JumpForce = 10;
+    public float jumpVelocityYScale = 1;
     public float glideGravityScale = 0.5f;
 
     [Header("GroundDedection")]
@@ -71,9 +72,17 @@ public class PlayerMovement : MonoBehaviour
         {
             if(this.isGrounded)
             {
+                if(this.playerBody.velocity.y < 0)
+                {
+                    this.playerBody.velocity = new Vector2(this.playerBody.velocity.x, this.playerBody.velocity.y * this.jumpVelocityYScale);
+                }
                 this.playerBody.AddForce(new Vector2(0, this.JumpForce), ForceMode2D.Impulse);
             } 
             else if (this.jumpCounter > 0) {
+                if(this.playerBody.velocity.y < 0)
+                {
+                    this.playerBody.velocity = new Vector2(this.playerBody.velocity.x, this.playerBody.velocity.y * this.jumpVelocityYScale);
+                }
                 this.playerBody.AddForce(new Vector2(0, this.JumpForce), ForceMode2D.Impulse);
                 this.jumpCounter--;
             }
