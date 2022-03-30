@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [Header("GroundMovement")]
     public float GroundMoveSpeed = 10;
     public float GroundDrag = 2;
+    public float maxGroundVelocityFromInput = 100000;
 
     [Header("AirMovement")]
     public float AirMoveSpeed = 10;
     public float AirDrag = 1;
+    public float maxAirVelocityFromInput = 100000;
 
     [Header("JumpAndGlide")]
     public float JumpForce = 10;
@@ -36,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         this.moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-
 
         this.jump();
     }
@@ -83,11 +84,55 @@ public class PlayerMovement : MonoBehaviour
     {
         if(this.isGrounded)
         {
-            this.playerBody.AddForce(this.moveDirection * this.GroundMoveSpeed, ForceMode2D.Force);
+            this.groundMove();
         }
         else
         {
-            this.playerBody.AddForce(this.moveDirection * this.AirMoveSpeed, ForceMode2D.Force);
+            this.airMove();
+        }
+    }
+
+    private void airMove()
+    {
+        if(this.moveDirection.x > 0)
+        {
+            //move right
+            if(this.playerBody.velocity.x < this.maxAirVelocityFromInput)
+            {
+                //velocity.x is still smaller, than max
+                this.playerBody.AddForce(this.moveDirection * this.AirMoveSpeed, ForceMode2D.Force);
+            }
+        }
+        else if(this.moveDirection.x < 0)
+        {
+            //move left
+            if(this.playerBody.velocity.x > -this.maxAirVelocityFromInput)
+            {
+                //velocity.x is still bigger, tham min (-max)
+                this.playerBody.AddForce(this.moveDirection * this.AirMoveSpeed, ForceMode2D.Force);
+            }
+        }
+    }
+
+    private void groundMove()
+    {
+        if(this.moveDirection.x > 0)
+        {
+            //move right
+            if(this.playerBody.velocity.x < this.maxGroundVelocityFromInput)
+            {
+                //velocity.x is still smaller, than max
+                this.playerBody.AddForce(this.moveDirection * this.GroundMoveSpeed, ForceMode2D.Force);
+            }
+        }
+        else if(this.moveDirection.x < 0)
+        {
+            //move left
+            if(this.playerBody.velocity.x > -this.maxGroundVelocityFromInput)
+            {
+                //velocity.x is still bigger, tham min (-max)
+                this.playerBody.AddForce(this.moveDirection * this.GroundMoveSpeed, ForceMode2D.Force);
+            }
         }
     }
 

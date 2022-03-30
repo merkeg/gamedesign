@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe643a2e7c7d54740a390fc2c54980a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AirMoveSpeed: 40
   GroundMoveSpeed: 50
-  AirDrag: 2
   GroundDrag: 3
+  maxGroundVelocityFromInput: 100000
+  AirMoveSpeed: 40
+  AirDrag: 2
+  maxAirVelocityFromInput: 100000
   JumpForce: 25
   glideGravityScale: 0.5
   topLeft: {fileID: 2340449237093478327}
