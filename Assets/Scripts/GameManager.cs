@@ -37,6 +37,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Total: " + this.getPesistentFeatherCount());
+            Debug.Log("Level: " + this.GetFeatherCountCurrentLevel());
+        }
     }
 
     public void PlayerDeath()
@@ -90,12 +95,18 @@ public class GameManager : MonoBehaviour
     {
         foreach(int featherId in this.tempFeathList)
         {
-            this.levelPersistentFeathList.Add(featherId);
+            if(this.levelPersistentFeathList.Contains(featherId) == false)
+            {
+                this.levelPersistentFeathList.Add(featherId);
+            }   
         }
         
         foreach(int featherId in this.levelPersistentFeathList)
         {
-            this.persistentFeathList[this.levelID].Add(featherId);
+            if(this.persistentFeathList[this.levelID].Contains(featherId) == false)
+            {
+                this.persistentFeathList[this.levelID].Add(featherId);
+            }
         }
 
         this.tempFeathList.Clear();
@@ -104,7 +115,7 @@ public class GameManager : MonoBehaviour
 
     public int GetFeatherCountCurrentLevel()
     {
-        return this.tempFeathList.Count + this.levelPersistentFeathList.Count + this.persistentFeathList[this.levelID].Count;
+        return this.tempFeathList.Count + this.levelPersistentFeathList.Count;
     }
 
     public void LoadHub()
@@ -121,6 +132,11 @@ public class GameManager : MonoBehaviour
     private void LoadLevel1()
     {
         this.LoadScene("GameScene", 1);
+    }
+
+    private void LoadLevel2()
+    {
+        this.LoadScene("Level2", 2);
     }
 
     public int getPesistentFeatherCount()
@@ -145,6 +161,10 @@ public class GameManager : MonoBehaviour
         {
             case 1:
                 this.LoadLevel1();
+                break;
+
+            case 2:
+                this.LoadLevel2();
                 break;
 
             case 999:
