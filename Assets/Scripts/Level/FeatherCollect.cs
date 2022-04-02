@@ -6,9 +6,15 @@ public class FeatherCollect : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public int FeatherId = -1;
     void Start()
     {
+        if(this.FeatherId < 0)
+        {
+            throw new System.Exception("No Feather ID set");
+        }
 
+        GameManager.Instance.FeatherAllwoedToExist(this.gameObject, this.FeatherId);
     }
 
     // Update is called once per frame
@@ -21,7 +27,7 @@ public class FeatherCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.featherCount++;
+            GameManager.Instance.CollectFeather(this.FeatherId);
             GameObject.Destroy(this.gameObject);
         }
     }

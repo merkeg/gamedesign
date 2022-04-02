@@ -21,7 +21,7 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (GameManager.Instance.featherCount >= 2)
+            if (GameManager.Instance.GetFeatherCountCurrentLevel() >= 2)
             {
                 SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
             }

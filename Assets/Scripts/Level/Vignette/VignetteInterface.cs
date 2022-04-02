@@ -29,6 +29,10 @@ public class VignetteInterface : MonoBehaviour
 
     public void AddVignetteValue(float intensity)
     {
+        if(this._vignette == null)
+        {
+            VolumeProfile.TryGet<Vignette>(out _vignette);
+        }
         SetVignette(_vignette.intensity.value + intensity);
     }
 
