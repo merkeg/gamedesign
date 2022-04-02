@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int levelID = -1;
     public bool isAlive;
 
+    private Vector3? checkpoint = null;
+
     // Start is called before the first frame updatepublic static GameManager Instance;
     private void Awake()
     {
@@ -30,8 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        this.isAlive = true;
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        this.LoadLevel1();
     }
 
     // Update is called once per frame
@@ -66,6 +67,19 @@ public class GameManager : MonoBehaviour
         this.levelID = levelID;
         this.isAlive = true;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+
+        if(this.checkpoint != null)
+        {
+            Debug.Log("Wtf");
+            GameObject player = GameObject.Find("Player");
+            if(player != null)
+            {
+                Debug.Log("Shoppa");
+                player.transform.position = (Vector3)this.checkpoint; // We need to wait till Scene is loaded, I think
+            }
+        }
+
+        this.checkpoint = null;
     }
 
     public void FeatherAllwoedToExist(GameObject feather, int featherId)
@@ -81,7 +95,7 @@ public class GameManager : MonoBehaviour
         this.tempFeathList.Add(featherId);
     }
 
-    public void CheckpointReached()
+    public void CheckpointReached(Vector3 checkpoint)
     {
         foreach(int featherId in this.tempFeathList)
         {
@@ -89,6 +103,8 @@ public class GameManager : MonoBehaviour
         }
         this.tempFeathList.Clear();
         //Set Checkpint Cords
+
+        this.checkpoint = checkpoint;
     }
 
     public void LevelEndReached()
