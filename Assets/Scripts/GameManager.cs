@@ -46,16 +46,16 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LooseScene", LoadSceneMode.Single);
     }
 
-    public void LoadScene(string sceneName, int levelID = -1)
+    private void LoadScene(string sceneName, int levelID = -1, bool resetLevelFeatherList = true)
     {
-        if(levelID > 0 && levelID != this.levelID)
+        if(levelID > 0 && resetLevelFeatherList)
         {
             if(this.persistentFeathList.ContainsKey(levelID) == false)
             {
                 this.persistentFeathList[levelID] = new List<int>();
             }
 
-            this.levelPersistentFeathList = this.persistentFeathList[levelID];
+            this.levelPersistentFeathList = new List<int>(this.persistentFeathList[levelID]);
             this.tempFeathList.Clear();
         }
         this.levelID = levelID;
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         {
             this.levelPersistentFeathList.Add(featherId);
         }
-
+        this.tempFeathList.Clear();
         //Set Checkpint Cords
     }
 
@@ -97,11 +97,14 @@ public class GameManager : MonoBehaviour
         {
             this.persistentFeathList[this.levelID].Add(featherId);
         }
+
+        this.tempFeathList.Clear();
+        this.levelPersistentFeathList.Clear();
     }
 
     public int GetFeatherCountCurrentLevel()
     {
-        return this.tempFeathList.Count;
+        return this.tempFeathList.Count + this.levelPersistentFeathList.Count + this.persistentFeathList[this.levelID].Count;
     }
 
     public void LoadHub()
@@ -115,7 +118,7 @@ public class GameManager : MonoBehaviour
         this.LoadScene("Hub");
     }
 
-    public void LoadLevel1()
+    private void LoadLevel1()
     {
         this.LoadScene("GameScene", 1);
     }
@@ -129,5 +132,28 @@ public class GameManager : MonoBehaviour
         }
 
         return sum;
+    }
+
+    public void LoadMainMenu()
+    {
+        this.LoadScene("StartScene");
+    }
+
+    public void LoadLevel(int level)
+    {
+        switch(level)
+        {
+            case 1:
+                this.LoadLevel1();
+                break;
+
+            case 999:
+                this.LoadMainMenu();
+                break;
+
+            default:
+                throw new System.Exception("This Level does not Exsist");
+        }
+            
     }
 }

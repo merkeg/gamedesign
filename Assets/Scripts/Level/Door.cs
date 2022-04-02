@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
+    public int feathersNeeded = 0;
+    private bool PlayerIsAtTheDoor = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,17 +16,32 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(this.PlayerIsAtTheDoor)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                if (GameManager.Instance.GetFeatherCountCurrentLevel() >= this.feathersNeeded)
+            {
+                GameManager.Instance.LevelEndReached();
+                GameManager.Instance.LoadHub();
+            }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if(other.gameObject.tag == "Player")
         {
-            if (GameManager.Instance.GetFeatherCountCurrentLevel() >= 2)
-            {
-                SceneManager.LoadScene("WinScene", LoadSceneMode.Single);
-            }
+            this.PlayerIsAtTheDoor = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            this.PlayerIsAtTheDoor = false;
         }
     }
 }

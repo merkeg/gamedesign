@@ -155,7 +155,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0
+  weight: 1
   sharedProfile: {fileID: 11400000, guid: 49be8f3df834a5147837a422d8c4f20a, type: 2}
 --- !u!4 &10713428
 Transform:
@@ -773,6 +773,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 874954589}
     m_Modifications:
+    - target: {fileID: 287938221438935250, guid: 7e198ea4c5313be45bea85d11602367b, type: 3}
+      propertyPath: feathersNeeded
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6257603745142105998, guid: 7e198ea4c5313be45bea85d11602367b, type: 3}
       propertyPath: m_RootOrder
       value: 5

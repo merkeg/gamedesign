@@ -6,13 +6,16 @@ public class LevelDoor : MonoBehaviour
 {
     public int NeededFeathers = 0;
     [SerializeField]
-    public UnityEngine.Events.UnityEvent LevelLoad;
+    public int LevelToLoad = -1;
 
     private bool PlayerIsAtTheDoor = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(this.LevelToLoad < 0)
+        {
+            throw new System.Exception("Missing Level to load");
+        }
     }
 
     // Update is called once per frame
@@ -22,7 +25,10 @@ public class LevelDoor : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                this.LevelLoad.Invoke();
+                if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
+                {
+                    GameManager.Instance.LoadLevel(this.LevelToLoad);
+                }
             }
         }
     }
