@@ -7,6 +7,8 @@ public class Door : MonoBehaviour
 {
     public int feathersNeeded = 0;
     private bool PlayerIsAtTheDoor = false;
+
+    public TMPro.TMP_Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class Door : MonoBehaviour
             }
             }
         }
+
+        this.text.text = GameManager.Instance.GetFeatherCountCurrentLevel() +"/"+ this.feathersNeeded;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
