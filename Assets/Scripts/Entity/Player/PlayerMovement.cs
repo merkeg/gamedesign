@@ -29,16 +29,28 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerBody;
     private int jumpCounter = 1;
 
+    private Vector3 localScale;
     // Start is called before the first frame update
     void Start()
     {
         this.playerBody = this.GetComponent<Rigidbody2D>();
+
+        this.localScale = this.transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         this.moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+
+        if(this.moveDirection.x > 0)
+        {
+            this.transform.localScale = this.localScale;
+        }
+        else if(this.moveDirection.x < 0)
+        {
+            this.transform.localScale = new Vector3(this.localScale.x * -1, this.localScale.y, this.localScale.z);
+        }
 
         this.jump();
     }

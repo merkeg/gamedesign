@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
     private Dictionary<int, List<int>> persistentFeathList = new Dictionary<int, List<int>>();
     private List<int> levelPersistentFeathList = new List<int>();
     private List<int> tempFeathList = new List<int>();
+
+    private List<int> levelSunList = new List<int>();
+    private List<int> tempSunList = new List<int>();
+
     public int levelID = -1;
     public bool isAlive;
 
@@ -45,16 +50,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    ///Always call this when player dies since the death scene is specail and should not change the levelID. Becasue checkpoints must be reachable
     public void PlayerDeath()
     {
         this.isAlive = false;
-        tempFeathList.Clear();
+        this.tempFeathList.Clear();
+        this.tempSunList.Clear();
         SceneManager.LoadScene("LooseScene", LoadSceneMode.Single);
     }
 
-    private void LoadScene(string sceneName, int levelID = -1, bool resetLevelFeatherList = true)
+    private void LoadScene(string sceneName, int levelID = -1, bool resetLevelFeatherListAndCheckPoint = true)
     {
-        if(levelID > 0 && resetLevelFeatherList)
+        if(levelID > 0 && resetLevelFeatherListAndCheckPoint && this.levelID != levelID)
         {
             if(this.persistentFeathList.ContainsKey(levelID) == false)
             {
@@ -63,23 +70,15 @@ public class GameManager : MonoBehaviour
 
             this.levelPersistentFeathList = new List<int>(this.persistentFeathList[levelID]);
             this.tempFeathList.Clear();
+
+            this.levelSunList.Clear();
+            this.tempSunList.Clear();
+
+            this.checkpoint = null;
         }
         this.levelID = levelID;
         this.isAlive = true;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-
-        if(this.checkpoint != null)
-        {
-            Debug.Log("Wtf");
-            GameObject player = GameObject.Find("Player");
-            if(player != null)
-            {
-                Debug.Log("Shoppa");
-                player.transform.position = (Vector3)this.checkpoint; // We need to wait till Scene is loaded, I think
-            }
-        }
-
-        this.checkpoint = null;
     }
 
     public void FeatherAllwoedToExist(GameObject feather, int featherId)
@@ -90,9 +89,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SunAllowedToExist(GameObject sun, int sunId)
+    {
+        if(this.levelSunList.Contains(sunId))
+        {
+            GameObject.Destroy(sun);
+        }
+    }
+
     public void CollectFeather(int featherId)
     {
         this.tempFeathList.Add(featherId);
+    }
+
+    public void CollectSun(int sunId)
+    {
+        this.tempSunList.Add(sunId);
     }
 
     public void CheckpointReached(Vector3 checkpoint)
@@ -102,7 +114,12 @@ public class GameManager : MonoBehaviour
             this.levelPersistentFeathList.Add(featherId);
         }
         this.tempFeathList.Clear();
-        //Set Checkpint Cords
+
+        foreach(int sunId in this.tempSunList)
+        {
+            this.levelSunList.Add(sunId);
+        }
+        this.tempSunList.Clear();
 
         this.checkpoint = checkpoint;
     }
@@ -127,6 +144,9 @@ public class GameManager : MonoBehaviour
 
         this.tempFeathList.Clear();
         this.levelPersistentFeathList.Clear();
+
+        this.levelSunList.Clear();
+        this.tempSunList.Clear();
     }
 
     public int GetFeatherCountCurrentLevel()
@@ -191,5 +211,10 @@ public class GameManager : MonoBehaviour
                 throw new System.Exception("This Level does not Exsist");
         }
             
+    }
+
+    public Vector3? GetCheckPoint()
+    {
+        return this.checkpoint;
     }
 }
