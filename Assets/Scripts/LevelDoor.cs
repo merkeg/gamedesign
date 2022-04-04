@@ -7,7 +7,7 @@ public class LevelDoor : MonoBehaviour
     public int NeededFeathers = 0;
     [SerializeField]
     public int LevelToLoad = -1;
-
+    public TMPro.TMP_Text text;
     private bool PlayerIsAtTheDoor = false;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,8 @@ public class LevelDoor : MonoBehaviour
         {
             throw new System.Exception("Missing Level to load");
         }
+
+        this.text.text = GameManager.Instance.getPesistentFeatherCount() +"/"+ this.NeededFeathers;
     }
 
     // Update is called once per frame
