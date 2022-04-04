@@ -371,9 +371,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2088673186}
-  - {fileID: 191784024}
   - {fileID: 356757620}
   - {fileID: 1550555846}
+  - {fileID: 191784024}
   m_Father: {fileID: 1464009041}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -828,7 +828,7 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 0
+  weight: 1
   sharedProfile: {fileID: 11400000, guid: 49be8f3df834a5147837a422d8c4f20a, type: 2}
 --- !u!4 &1937215268
 Transform:

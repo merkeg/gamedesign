@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    ///Always call this when player dies since the death scene is specail and should not change the levelID. Becasue checkpoints must be reachable
     public void PlayerDeath()
     {
         this.isAlive = false;
@@ -52,9 +53,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LooseScene", LoadSceneMode.Single);
     }
 
-    private void LoadScene(string sceneName, int levelID = -1, bool resetLevelFeatherList = true)
+    private void LoadScene(string sceneName, int levelID = -1, bool resetLevelFeatherListAndCheckPoint = true)
     {
-        if(levelID > 0 && resetLevelFeatherList)
+        if(levelID > 0 && resetLevelFeatherListAndCheckPoint && this.levelID != levelID)
         {
             if(this.persistentFeathList.ContainsKey(levelID) == false)
             {
@@ -63,23 +64,12 @@ public class GameManager : MonoBehaviour
 
             this.levelPersistentFeathList = new List<int>(this.persistentFeathList[levelID]);
             this.tempFeathList.Clear();
+
+            this.checkpoint = null;
         }
         this.levelID = levelID;
         this.isAlive = true;
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
-
-        if(this.checkpoint != null)
-        {
-            Debug.Log("Wtf");
-            GameObject player = GameObject.Find("Player");
-            if(player != null)
-            {
-                Debug.Log("Shoppa");
-                player.transform.position = (Vector3)this.checkpoint; // We need to wait till Scene is loaded, I think
-            }
-        }
-
-        this.checkpoint = null;
     }
 
     public void FeatherAllwoedToExist(GameObject feather, int featherId)
@@ -102,7 +92,6 @@ public class GameManager : MonoBehaviour
             this.levelPersistentFeathList.Add(featherId);
         }
         this.tempFeathList.Clear();
-        //Set Checkpint Cords
 
         this.checkpoint = checkpoint;
     }
@@ -191,5 +180,10 @@ public class GameManager : MonoBehaviour
                 throw new System.Exception("This Level does not Exsist");
         }
             
+    }
+
+    public Vector3? GetCheckPoint()
+    {
+        return this.checkpoint;
     }
 }
