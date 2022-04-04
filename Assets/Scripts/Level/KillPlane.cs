@@ -18,6 +18,6 @@ public class KillPlane : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        SceneManager.LoadScene("LooseScene", LoadSceneMode.Single);
+        GameManager.Instance.PlayerDeath();
     }
 }

@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
     private Dictionary<int, List<int>> persistentFeathList = new Dictionary<int, List<int>>();
     private List<int> levelPersistentFeathList = new List<int>();
     private List<int> tempFeathList = new List<int>();
+
+    private List<int> levelSunList = new List<int>();
+    private List<int> tempSunList = new List<int>();
+
     public int levelID = -1;
     public bool isAlive;
 
@@ -49,7 +54,8 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath()
     {
         this.isAlive = false;
-        tempFeathList.Clear();
+        this.tempFeathList.Clear();
+        this.tempSunList.Clear();
         SceneManager.LoadScene("LooseScene", LoadSceneMode.Single);
     }
 
@@ -64,6 +70,9 @@ public class GameManager : MonoBehaviour
 
             this.levelPersistentFeathList = new List<int>(this.persistentFeathList[levelID]);
             this.tempFeathList.Clear();
+
+            this.levelSunList.Clear();
+            this.tempSunList.Clear();
 
             this.checkpoint = null;
         }
@@ -80,9 +89,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SunAllowedToExist(GameObject sun, int sunId)
+    {
+        if(this.levelSunList.Contains(sunId))
+        {
+            GameObject.Destroy(sun);
+        }
+    }
+
     public void CollectFeather(int featherId)
     {
         this.tempFeathList.Add(featherId);
+    }
+
+    public void CollectSun(int sunId)
+    {
+        this.tempSunList.Add(sunId);
     }
 
     public void CheckpointReached(Vector3 checkpoint)
@@ -92,6 +114,12 @@ public class GameManager : MonoBehaviour
             this.levelPersistentFeathList.Add(featherId);
         }
         this.tempFeathList.Clear();
+
+        foreach(int sunId in this.tempSunList)
+        {
+            this.levelSunList.Add(sunId);
+        }
+        this.tempSunList.Clear();
 
         this.checkpoint = checkpoint;
     }
@@ -116,6 +144,9 @@ public class GameManager : MonoBehaviour
 
         this.tempFeathList.Clear();
         this.levelPersistentFeathList.Clear();
+
+        this.levelSunList.Clear();
+        this.tempSunList.Clear();
     }
 
     public int GetFeatherCountCurrentLevel()
