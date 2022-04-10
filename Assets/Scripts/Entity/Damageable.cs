@@ -4,11 +4,11 @@ namespace Entity
 {
     public class Damageable : MonoBehaviour
     {
-        public void TakeDamage()
+        public void TakeDamage(float damage)
         {
             VignetteInterface vignetteInterface = FindObjectOfType<VignetteInterface>();
             
-            vignetteInterface.AddVignetteValue(0.1f);
+            vignetteInterface.AddVignetteValue(damage);
         }
     }
 }
