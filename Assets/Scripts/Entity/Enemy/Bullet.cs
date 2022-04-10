@@ -40,7 +40,7 @@ namespace Enemy
             Damageable damageable = other.gameObject.GetComponent<Damageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage();
+                damageable.TakeDamage(0.1f);
             }
             Destroy(gameObject);
         }
