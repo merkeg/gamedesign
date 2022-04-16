@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public int levelID = -1;
     public bool isAlive;
 
+    private int LastLevel = -1;
+
     private Vector3? checkpoint = null;
 
     // Start is called before the first frame updatepublic static GameManager Instance;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        this.LoadLevel1();
+        this.LoadLevel(this.LastLevel);
     }
 
     // Update is called once per frame
@@ -168,11 +170,13 @@ public class GameManager : MonoBehaviour
     private void LoadLevel1()
     {
         this.LoadScene("GameScene", 1);
+        this.LastLevel = 1;
     }
 
     private void LoadLevel2()
     {
         this.LoadScene("Level2", 2);
+        this.LastLevel = 2;
     }
 
     public int getPesistentFeatherCount()
