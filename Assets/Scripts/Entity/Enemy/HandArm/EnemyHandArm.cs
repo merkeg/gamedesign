@@ -82,13 +82,13 @@ public class EnemyHandArm : MonoBehaviour
     private void SetArm()
     {
         Vector3 startToEnd = this.ArmEnd.position - this.ArmStart.position;
-        float angle = Vector3.Angle(Vector3.up, startToEnd);
+        //float angle = Vector3.Angle(Vector3.up, startToEnd);
+        float angle = Vector2.Angle(Vector2.up, startToEnd);
         
         if(this.ArmEnd.position.x > this.ArmStart.position.x)
         {
             angle = -angle;
         }
-        Debug.Log(angle);
 
         this.ArmGraphic.transform.eulerAngles = new Vector3(0, 0, angle);
         this.ArmGraphic.transform.position = this.ArmStart.position +  startToEnd / 2;
