@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Hammond : MonoBehaviour
+public class Enemy_Crawler : MonoBehaviour
 {
     public float speed = 20;
     public float chargeSpeed = 50;
@@ -21,12 +21,6 @@ public class Enemy_Hammond : MonoBehaviour
     public LayerMask PlayerLayer;
 
     public bool DebugDraw = false;
-
-    public bool PlayerInRangeToJump = false;
-    public float JumpCD = 2;
-    private float JumpCDCounter = 2;
-    public float JumpForceX = 50;
-    public float JumpForceY = 20;
 
     private Rigidbody2D rb;
 
@@ -73,12 +67,6 @@ public class Enemy_Hammond : MonoBehaviour
             this.Charing = false;
         }
 
-        if(this.PlayerInRangeToJump && this.JumpCDCounter <= 0)
-        {
-            this.rb.AddForce(new Vector2(this.JumpForceX, this.JumpForceY), ForceMode2D.Impulse);
-            this.JumpCDCounter = this.JumpCD;
-        }
-        this.JumpCDCounter -= Time.deltaTime;
         this.DmgCdCounter -= Time.deltaTime;
 
         if(DebugDraw)
@@ -112,7 +100,6 @@ public class Enemy_Hammond : MonoBehaviour
         this.transform.localScale = new Vector3(this.transform.localScale.x * - 1, this.transform.localScale.y, this.transform.localScale.z);
         this.speed *= -1;
         this.chargeSpeed *= -1;
-        this.JumpForceX *= -1;
         this.wallDedectionLength *= -1;
     }
 
@@ -125,7 +112,7 @@ public class Enemy_Hammond : MonoBehaviour
             if(DmgCdCounter <= 0)
             {
                 this.playerDmg.TakeDamage(this.Damage);
-                GameObject.Destroy(this.gameObject);
+                //GameObject.Destroy(this.gameObject);
                 this.DmgCdCounter = DmgCd;
             }
         }
