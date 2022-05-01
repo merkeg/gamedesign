@@ -13,6 +13,8 @@ public class Enemy_Hammond : MonoBehaviour
     public float groundDedectionlength = 1.5f;
     public Transform GroundDecetion;
     public LayerMask GroundLayer;
+    public Transform WallDedection;
+    private float wallDedectionLength = 0.1f;
 
     public float CharingDedectionLengt = 5; 
     public Transform CharingDedection;
@@ -55,6 +57,12 @@ public class Enemy_Hammond : MonoBehaviour
             }
         }
 
+        RaycastHit2D wall = Physics2D.Raycast(this.WallDedection.position, Vector2.right, this.wallDedectionLength, this.GroundLayer);
+        if(wall.collider != null)
+        {
+            this.Rotate();
+        }
+
         RaycastHit2D charing = Physics2D.Raycast(this.CharingDedection.position, Vector2.right * this.transform.localScale.x, this.CharingDedectionLengt, this.PlayerLayer);
         if(charing.collider != null && charing.collider.tag == "Player")
         {
@@ -77,6 +85,7 @@ public class Enemy_Hammond : MonoBehaviour
         {
             Debug.DrawRay(this.GroundDecetion.position, Vector3.down * this.groundDedectionlength, Color.green, 0);
             Debug.DrawRay(this.CharingDedection.position,Vector2.right * this.CharingDedectionLengt * this.transform.lossyScale.x, Color.green, 0);
+            Debug.DrawRay(this.WallDedection.position, Vector3.right * this.wallDedectionLength, Color.cyan, 0);
         }
     }
 
@@ -104,6 +113,7 @@ public class Enemy_Hammond : MonoBehaviour
         this.speed *= -1;
         this.chargeSpeed *= -1;
         this.JumpForceX *= -1;
+        this.wallDedectionLength *= -1;
     }
 
     private float DmgCd = 2;
