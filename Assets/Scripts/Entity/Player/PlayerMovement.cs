@@ -204,8 +204,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 isOnSlope = false;
             }
-        
-            Debug.Log(isOnSlope);
 
             Debug.DrawRay(hit.point, slopeNormalPerpendicular, Color.red);
             Debug.DrawRay(hit.point, hit.normal, Color.blue);
