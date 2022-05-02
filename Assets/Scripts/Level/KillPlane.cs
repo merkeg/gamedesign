@@ -18,6 +18,9 @@ public class KillPlane : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        GameManager.Instance.PlayerDeath();
+        if(other.gameObject.tag == "Player")
+        {
+            GameManager.Instance.PlayerDeath();
+        }
     }
 }

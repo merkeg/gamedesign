@@ -28,4 +28,10 @@ public class Timo : MonoBehaviour
 
         GameObject.Destroy(this.gameObject);
     }
+
+    public void setForce(float x, float y)
+    {
+        this.ImpulseForceX = x;
+        this.ImpulseForceY = y;
+    }
 }
