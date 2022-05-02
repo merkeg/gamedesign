@@ -164,7 +164,8 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         this.persistentFeathList.Clear();
-        this.LoadScene("Hub");
+        //this.LoadScene("Hub");
+        this.LoadLevelTutorial();
     }
 
     private void LoadLevel1()
