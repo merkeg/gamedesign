@@ -85,6 +85,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   WallDedection: {fileID: 4088415263718092700}
+  wallDedectionLength: 0.1
   CharingDedectionLengt: 15
   CharingDedection: {fileID: 6499415368614951232}
   PlayerLayer:
@@ -245,8 +246,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6499415369061631188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.896002}
-  m_LocalScale: {x: -4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0.3, z: 4.896002}
+  m_LocalScale: {x: -6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 6499415368378526470}
   m_RootOrder: 0

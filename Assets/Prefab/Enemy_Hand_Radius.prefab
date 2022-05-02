@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerInRange: 0
-  Speed: 2
+  Speed: 4
   addedDrag: 2
   dmgPerSec: 0.1
 --- !u!1 &7287490483392656324
