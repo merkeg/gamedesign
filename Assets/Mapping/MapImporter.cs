@@ -8,6 +8,7 @@ using Object = System.Object;
 
 namespace Mapping
 {
+    #if UNITY_EDITOR
     public class MapImporter : EditorWindow
     {
         
@@ -80,5 +81,5 @@ namespace Mapping
 
         }
     }
-    
+    #endif
 }
