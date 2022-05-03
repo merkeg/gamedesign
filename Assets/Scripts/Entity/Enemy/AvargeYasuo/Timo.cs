@@ -21,11 +21,21 @@ public class Timo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.tag == "Timo")
+        {
+            return;
+        }
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Entity.Damageable>().TakeDamage(this.Damage);
         }
 
         GameObject.Destroy(this.gameObject);
+    }
+
+    public void setForce(float x, float y)
+    {
+        this.ImpulseForceX = x;
+        this.ImpulseForceY = y;
     }
 }

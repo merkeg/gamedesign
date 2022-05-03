@@ -23,11 +23,19 @@ public class PlayerMovement : MonoBehaviour
     public Transform topLeft;
     public Transform bottomRight;
     public LayerMask groundLayer;
+    public Transform SlopeDedection;
+    public float SlopeDedectionLength;
+    public PhysicsMaterial2D Fullfriction;
+    public PhysicsMaterial2D ZeroFriction;
 
     private Vector2 moveDirection;
     private bool isGrounded;
     private Rigidbody2D playerBody;
     private int jumpCounter = 1;
+    private float slopeDownAngle;
+    private Vector2 slopeNormalPerpendicular;
+
+    private bool isOnSlope;
 
     private Vector3 localScale;
     // Start is called before the first frame update
@@ -62,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
         this.setDrag();
         this.glide();
+        this.slopeCheck();
         this.move();
     }
 
@@ -103,9 +112,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void move()
     {
+        this.playerBody.sharedMaterial = null; // Becasue of slopeMove
         if(this.isGrounded)
         {
+            if(this.isOnSlope)
+            {
+                this.slopeMove();
+            }
+            else
+            {
             this.groundMove();
+            }
         }
         else
         {
@@ -166,6 +183,57 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             this.playerBody.gravityScale = 1f;
+        }
+    }
+
+    private void slopeCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(this.SlopeDedection.position, Vector2.down, this.SlopeDedectionLength, this.groundLayer);
+        //Debug.DrawRay(this.SlopeDedection.position, Vector2.down * this.SlopeDedectionLength, Color.red);
+
+        if(hit)
+        {
+            this.slopeNormalPerpendicular = Vector2.Perpendicular(hit.normal).normalized;
+            this.slopeDownAngle = Vector2.Angle(hit.normal, Vector2.up);
+
+            if(slopeDownAngle != 0)
+            {
+                isOnSlope = true;
+            }
+            else
+            {
+                isOnSlope = false;
+            }
+
+            Debug.DrawRay(hit.point, slopeNormalPerpendicular, Color.red);
+            Debug.DrawRay(hit.point, hit.normal, Color.blue);
+        }
+    }
+
+    private void slopeMove()
+    {
+        this.playerBody.sharedMaterial = this.ZeroFriction;
+        if(this.moveDirection.x > 0)
+        {
+            //move right
+            if(this.playerBody.velocity.x < this.maxGroundVelocityFromInput)
+            {
+                //velocity.x is still smaller, than max
+                this.playerBody.AddForce(new Vector2(-this.moveDirection.x * this.slopeNormalPerpendicular.x, -this.moveDirection.x * this.slopeNormalPerpendicular.y)* this.GroundMoveSpeed, ForceMode2D.Force);
+            }
+        }
+        else if(this.moveDirection.x < 0)
+        {
+            //move left
+            if(this.playerBody.velocity.x > -this.maxGroundVelocityFromInput)
+            {
+                //velocity.x is still bigger, tham min (-max)
+                this.playerBody.AddForce(new Vector2(-this.moveDirection.x * this.slopeNormalPerpendicular.x, -this.moveDirection.x * this.slopeNormalPerpendicular.y)* this.GroundMoveSpeed, ForceMode2D.Force);
+            }
+        }
+        else
+        { //No Movemnt so we dont want to go slide down Slopes
+            this.playerBody.sharedMaterial = Fullfriction;
         }
     }
 }

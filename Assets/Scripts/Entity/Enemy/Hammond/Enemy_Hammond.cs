@@ -14,7 +14,7 @@ public class Enemy_Hammond : MonoBehaviour
     public Transform GroundDecetion;
     public LayerMask GroundLayer;
     public Transform WallDedection;
-    private float wallDedectionLength = 0.1f;
+    public float wallDedectionLength = 0.1f;
 
     public float CharingDedectionLengt = 5; 
     public Transform CharingDedection;
@@ -53,6 +53,7 @@ public class Enemy_Hammond : MonoBehaviour
             }
             else
             {
+                Debug.Log("Ground");
                 this.Rotate();
             }
         }
@@ -60,6 +61,7 @@ public class Enemy_Hammond : MonoBehaviour
         RaycastHit2D wall = Physics2D.Raycast(this.WallDedection.position, Vector2.right, this.wallDedectionLength, this.GroundLayer);
         if(wall.collider != null)
         {
+            Debug.Log("Wall");
             this.Rotate();
         }
 

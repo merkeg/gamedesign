@@ -7,6 +7,9 @@ public class Thrower : MonoBehaviour
     public float trhowCD = 4;
     private float throwCdCounter = 1;
 
+    public float ImpulseForceX = 25;
+    public float ImpulseForceY = 10;
+
     public Transform pos;
     public GameObject Timo;
     // Start is called before the first frame update
@@ -20,7 +23,8 @@ public class Thrower : MonoBehaviour
     {
         if(this.throwCdCounter <= 0)
         {
-            Instantiate(this.Timo, this.pos.position, Quaternion.identity);
+            GameObject timo =  Instantiate(this.Timo, this.pos.position, Quaternion.identity);
+            timo.GetComponent<Timo>().setForce(this.ImpulseForceX, this.ImpulseForceY);
             this.throwCdCounter = this.trhowCD;
         }
 

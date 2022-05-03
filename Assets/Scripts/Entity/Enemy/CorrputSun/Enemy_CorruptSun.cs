@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy_CorruptSun : MonoBehaviour
 {
+    public float TimeToBOOM;
     public GameObject explosion;
     private bool idontfuckingknwoanamenameityourselfyoufuckingidiot = true;
     // Start is called before the first frame update
@@ -25,7 +26,7 @@ public class Enemy_CorruptSun : MonoBehaviour
             if(this.idontfuckingknwoanamenameityourselfyoufuckingidiot)
             {
                 Debug.Log("Floppa");
-                Invoke("Explode", 2);
+                Invoke("Explode", this.TimeToBOOM);
                 this.idontfuckingknwoanamenameityourselfyoufuckingidiot = false;
             }
         }

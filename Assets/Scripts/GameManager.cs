@@ -164,12 +164,13 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         this.persistentFeathList.Clear();
-        this.LoadScene("Hub");
+        //this.LoadScene("Hub");
+        this.LoadLevelTutorial();
     }
 
     private void LoadLevel1()
     {
-        this.LoadScene("GameScene", 1);
+        this.LoadScene("Level1", 1);
         this.LastLevel = 1;
     }
 
@@ -177,6 +178,12 @@ public class GameManager : MonoBehaviour
     {
         this.LoadScene("Level2", 2);
         this.LastLevel = 2;
+    }
+
+    private void LoadLevelTutorial()
+    {
+        this.LoadScene("Tutorial", 100);
+        this.LastLevel = 100;
     }
 
     public int getPesistentFeatherCount()
@@ -205,6 +212,10 @@ public class GameManager : MonoBehaviour
 
             case 2:
                 this.LoadLevel2();
+                break;
+
+            case 100:
+                this.LoadLevelTutorial();
                 break;
 
             case 999:
