@@ -9,6 +9,10 @@ public class Door : MonoBehaviour
     private bool PlayerIsAtTheDoor = false;
 
     public TMPro.TMP_Text text;
+
+    public SpriteRenderer spriteRenderer;
+    public Sprite portalOpen;
+    public Sprite portalClosed;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,7 @@ public class Door : MonoBehaviour
         }
 
         this.text.text = GameManager.Instance.GetFeatherCountCurrentLevel() +"/"+ this.feathersNeeded;
+        this.spriteRenderer.sprite = GameManager.Instance.GetFeatherCountCurrentLevel() < this.feathersNeeded ? this.portalClosed : this.portalOpen;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

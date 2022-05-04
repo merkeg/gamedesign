@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 3666377184243163405}
   - component: {fileID: 3666377184243163403}
   - component: {fileID: 3666377184243163402}
+  - component: {fileID: 2392188991027402740}
   m_Layer: 0
   m_Name: LevelDoor
   m_TagString: Untagged
@@ -257,6 +258,23 @@ MonoBehaviour:
   NeededFeathers: 0
   LevelToLoad: -1
   text: {fileID: 8642309999635147426}
+  errorMessageTime: 2.5
+  errorMessage: You need {0} more feathers!
+  spriteRenderer: {fileID: 4160693368585037395}
+  portalOpen: {fileID: 21300000, guid: 2af9302a75277954480cba31a65de3de, type: 3}
+  portalClosed: {fileID: 21300000, guid: cecc167e646b7e57c9e40fb02fa90485, type: 3}
+--- !u!114 &2392188991027402740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666377184243163404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af96d61434f838d44a25ed300062585f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6701604919752322137
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 16.32}
+  m_SizeDelta: {x: 200.00002, y: 82.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6385805691476075807
 CanvasRenderer:
@@ -349,8 +367,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
