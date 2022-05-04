@@ -11,6 +11,10 @@ public class Timo : MonoBehaviour
     void Start()
     {
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(this.ImpulseForceX, this.ImpulseForceY), ForceMode2D.Impulse);
+        if(this.ImpulseForceX > 0)
+        {
+            this.transform.localScale *= -1;
+        }
     }
 
     // Update is called once per frame
