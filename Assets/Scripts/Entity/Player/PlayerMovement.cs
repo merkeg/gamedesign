@@ -98,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
                     this.playerBody.velocity = new Vector2(this.playerBody.velocity.x, this.playerBody.velocity.y * this.jumpVelocityYScale);
                 }
                 this.playerBody.AddForce(new Vector2(0, this.JumpForce), ForceMode2D.Impulse);
-            }
+            } 
             else if (this.jumpCounter > 0) {
                 if(this.playerBody.velocity.y < 0)
                 {
