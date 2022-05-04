@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void glide()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
         {
             this.playerBody.gravityScale = this.glideGravityScale;
         }
