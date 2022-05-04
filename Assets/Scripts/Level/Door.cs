@@ -8,16 +8,26 @@ public class Door : MonoBehaviour
     public int feathersNeeded = 0;
     private bool PlayerIsAtTheDoor = false;
 
+    private SpriteRenderer rendere;
+    public Sprite onSprite;
+    bool on = false;
+
     public TMPro.TMP_Text text;
     // Start is called before the first frame update
     void Start()
     {
-
+        this.rendere = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!this.on && GameManager.Instance.GetFeatherCountCurrentLevel() >= this.feathersNeeded)
+        {
+            this.rendere.sprite = this.onSprite;
+            this.on = true;
+        }
+
         if(this.PlayerIsAtTheDoor)
         {
             if(Input.GetKeyDown(KeyCode.E))
