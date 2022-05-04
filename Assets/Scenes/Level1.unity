@@ -7353,7 +7353,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 287938221438935250, guid: 7e198ea4c5313be45bea85d11602367b, type: 3}
       propertyPath: feathersNeeded
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943167378619005312, guid: 7e198ea4c5313be45bea85d11602367b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689609170921333717, guid: 7e198ea4c5313be45bea85d11602367b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6257603745142105998, guid: 7e198ea4c5313be45bea85d11602367b, type: 3}
       propertyPath: m_RootOrder
@@ -7459,6 +7467,10 @@ PrefabInstance:
     - target: {fileID: 2266021633376611333, guid: 9cee27a440e446040b0da63232e435fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266021633376611334, guid: 9cee27a440e446040b0da63232e435fb, type: 3}
+      propertyPath: feathersInLevel
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cee27a440e446040b0da63232e435fb, type: 3}
