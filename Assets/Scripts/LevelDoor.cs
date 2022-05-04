@@ -8,7 +8,13 @@ public class LevelDoor : MonoBehaviour
     [SerializeField]
     public int LevelToLoad = -1;
     public TMPro.TMP_Text text;
+
+    public Sprite onSprite;
     private bool PlayerIsAtTheDoor = false;
+
+    public float errorMessageTime = 2.5f;
+    private float errorMessageTimer = 2.5f;
+    public string errorMessage = "You need {0} more feathers!";
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +23,12 @@ public class LevelDoor : MonoBehaviour
             throw new System.Exception("Missing Level to load");
         }
 
-        this.text.text = GameManager.Instance.getPesistentFeatherCount() +"/"+ this.NeededFeathers;
+        //this.text.text = GameManager.Instance.getPesistentFeatherCount() +"/"+ this.NeededFeathers;
+        this.text.text = "Level " + (this.LevelToLoad);
+        if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
+        {
+            this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.onSprite;
+        }
     }
 
     // Update is called once per frame
@@ -30,8 +41,17 @@ public class LevelDoor : MonoBehaviour
                 if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
                 {
                     GameManager.Instance.LoadLevel(this.LevelToLoad);
+                }else {
+                    this.text.text = string.Format(this.errorMessage, this.NeededFeathers - GameManager.Instance.getPesistentFeatherCount());
                 }
             }
+        }
+
+        this.errorMessageTimer += Time.deltaTime;
+        if (this.errorMessageTimer >= this.errorMessageTime)
+        {
+            this.errorMessageTimer = 0f;
+            this.text.text = "Level " + (this.LevelToLoad);
         }
     }
 

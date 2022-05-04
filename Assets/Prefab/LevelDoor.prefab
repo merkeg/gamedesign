@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingLayerID: -651973463
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2af9302a75277954480cba31a65de3de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cecc167e646b7e57c9e40fb02fa90485, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -257,6 +257,9 @@ MonoBehaviour:
   NeededFeathers: 0
   LevelToLoad: -1
   text: {fileID: 8642309999635147426}
+  onSprite: {fileID: 21300000, guid: 2af9302a75277954480cba31a65de3de, type: 3}
+  errorMessageTime: 2.5
+  errorMessage: You need {0} more feathers!
 --- !u!1 &6701604919752322137
 GameObject:
   m_ObjectHideFlags: 0
