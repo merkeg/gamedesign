@@ -10,7 +10,7 @@ public class LightLooser : MonoBehaviour
     void Start()
     {
         this.vignetteInterface = FindObjectOfType<VignetteInterface>();
-        this.vignetteInterface.AddVignetteValue(-5f);
+        this.vignetteInterface.AddVignetteValue(0);
     }
 
     // Update is called once per frame
