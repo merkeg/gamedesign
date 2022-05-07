@@ -54,3 +54,9 @@ TagManager:
   - name: ForeGround
     uniqueID: 3202324981
     locked: 0
+  - name: Darkness
+    uniqueID: 3901898245
+    locked: 0
+  - name: DarknessForeGround
+    uniqueID: 1563293525
+    locked: 0

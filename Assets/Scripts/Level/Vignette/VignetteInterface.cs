@@ -9,41 +9,48 @@ public class VignetteInterface : MonoBehaviour
     public VolumeProfile VolumeProfile;
     private Vignette _vignette;
 
+    public Transform mask;
+
+    public float size;
+
+    public float masxSize = 40;
+
     void Start()
     {
-        VolumeProfile.TryGet<Vignette>(out _vignette);
+        //VolumeProfile.TryGet<Vignette>(out _vignette);
 
-        _vignette.intensity.overrideState = true;
+        //_vignette.intensity.overrideState = true;
 
+        Debug.Log(Camera.main.aspect);
+
+        this.size = this.masxSize;
     }
 
-    public void ClearVignette()
+    public void Update()
     {
-        _vignette.intensity.value = 0;
-    }
+        if(this.size < 0)
+        {
+            this.size = 0;
+        }
+        else if(this.size > this.masxSize)
+        {
+            this.size = masxSize;
+        }
+        Vector3 newScale = new Vector3(Camera.main.aspect * 15,15, 1);
+        newScale = newScale * size;
+        this.mask.localScale = newScale;
+        //Debug.Log(this.mask.localScale);
 
-    public void SetVignette(float intensity)
-    {
-        _vignette.intensity.value = intensity;
     }
 
     public void AddVignetteValue(float intensity)
     {
-        if(this._vignette == null)
-        {
-            VolumeProfile.TryGet<Vignette>(out _vignette);
-        }
-        SetVignette(_vignette.intensity.value + intensity);
-    }
-
-    public void SetVignetteColor(Color color)
-    {
-        _vignette.color.value = color;
+        this.size = this.size - this.masxSize * intensity;
     }
 
     public float GetIntensity()
     {
-        return this._vignette.intensity.value;
+        return 1 - this.size / this.masxSize;
     }
 
 
