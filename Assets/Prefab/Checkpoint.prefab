@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af96d61434f838d44a25ed300062585f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoomOutSize: 23
 --- !u!61 &5863517572228695923
 BoxCollider2D:
   m_ObjectHideFlags: 0
