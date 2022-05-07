@@ -253,7 +253,7 @@ MonoBehaviour:
   maxAirVelocityFromInput: 100000
   JumpForce: 25
   jumpVelocityYScale: 0
-  glideGravityScale: 0.5
+  glideGravityScale: 0.25
   topLeft: {fileID: 5977154476405118725}
   bottomRight: {fileID: 5977154476313206836}
   groundLayer:
