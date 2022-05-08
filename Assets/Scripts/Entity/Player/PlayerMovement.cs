@@ -49,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PauseMenu.isPaused)
+        {
+            return;
+        }
         this.moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
 
         if(this.moveDirection.x > 0)
