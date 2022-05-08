@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case 999:
-                this.LoadMainMenu();
+                Application.Quit();
                 break;
 
             default:
