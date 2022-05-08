@@ -6,9 +6,9 @@ public class CheckPoint : MonoBehaviour
 {
     private VignetteInterface vignette;
     private bool playerOnCheckpoint = false;
-
     public float zoomOutSize = 20;
-    private float defaultSize = 17;
+
+    private CamController camController;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,8 @@ public class CheckPoint : MonoBehaviour
             GameObject.Find("Player").transform.position = (Vector3)checkpoint;
         }
         this.vignette = FindObjectOfType<VignetteInterface>();
+
+        this.camController = GameObject.Find("Main Camera").GetComponent<CamController>();
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class CheckPoint : MonoBehaviour
         {
             GameManager.Instance.CheckpointReached(this.transform.position);
             this.playerOnCheckpoint = true;
-            Camera.main.orthographicSize = this.zoomOutSize;
+            this.camController.trySetDiseredZoom(this.zoomOutSize, 1, 1);
         }
     }
 
@@ -45,7 +47,7 @@ public class CheckPoint : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             this.playerOnCheckpoint = false;
-            Camera.main.orthographicSize = this.defaultSize;
+            this.camController.trySetDiseredZoom(CamController.defaulZoom, 1, 0);
         }
     }
 }
