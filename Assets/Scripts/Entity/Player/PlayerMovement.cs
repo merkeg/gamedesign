@@ -38,12 +38,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isOnSlope;
 
     private Vector3 localScale;
+
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         this.playerBody = this.GetComponent<Rigidbody2D>();
 
         this.localScale = this.transform.localScale;
+        this.animator = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -76,6 +79,11 @@ public class PlayerMovement : MonoBehaviour
         this.glide();
         this.slopeCheck();
         this.move();
+
+        Debug.Log(this.playerBody.velocity.x);
+        this.animator.SetFloat("speedX", Mathf.Abs(this.playerBody.velocity.x));
+        this.animator.SetFloat("speedY", this.playerBody.velocity.y);
+        this.animator.SetBool("Grounded", this.isGrounded);
     }
 
     private void setDrag()
@@ -183,10 +191,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
         {
             this.playerBody.gravityScale = this.glideGravityScale;
+            this.animator.SetBool("Glide", true);
         }
         else
         {
             this.playerBody.gravityScale = 1f;
+            this.animator.SetBool("Glide", false);
         }
     }
 
