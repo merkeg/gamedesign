@@ -53,7 +53,7 @@ public class Enemy_Hammond : MonoBehaviour
             }
             else
             {
-                Debug.Log("Ground");
+                //Debug.Log("Ground");
                 this.Rotate();
             }
         }
@@ -61,7 +61,7 @@ public class Enemy_Hammond : MonoBehaviour
         RaycastHit2D wall = Physics2D.Raycast(this.WallDedection.position, Vector2.right, this.wallDedectionLength, this.GroundLayer);
         if(wall.collider != null)
         {
-            Debug.Log("Wall");
+            //Debug.Log("Wall");
             this.Rotate();
         }
 

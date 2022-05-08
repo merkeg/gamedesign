@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8642309999635147426, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_text
-      value: MainMenu
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 8642309999635147426, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_Enabled
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MainMenu
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
