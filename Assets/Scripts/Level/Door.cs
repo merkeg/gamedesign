@@ -13,6 +13,10 @@ public class Door : MonoBehaviour
     bool on = false;
 
     public TMPro.TMP_Text text;
+
+    public GameObject eText;
+    private float EelaspedTime = 0;
+    private float ETimeToShow = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +34,28 @@ public class Door : MonoBehaviour
 
         if(this.PlayerIsAtTheDoor)
         {
+            this.EelaspedTime += Time.deltaTime;
             if(Input.GetKeyDown(KeyCode.E))
             {
                 if (GameManager.Instance.GetFeatherCountCurrentLevel() >= this.feathersNeeded)
-            {
-                GameManager.Instance.LevelEndReached();
-                GameManager.Instance.LoadHub();
+                {
+                 GameManager.Instance.LevelEndReached();
+                    GameManager.Instance.LoadHub();
+                }
             }
-            }
+        }
+        else
+        {
+            this.EelaspedTime = 0;
+        }
+
+        if(this.EelaspedTime >= this.ETimeToShow)
+        {
+            eText.SetActive(true);
+        }
+        else
+        {
+            eText.SetActive(false);
         }
 
         this.text.text = GameManager.Instance.GetFeatherCountCurrentLevel() +"/"+ this.feathersNeeded;
