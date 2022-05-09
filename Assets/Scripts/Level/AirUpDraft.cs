@@ -23,6 +23,11 @@ public class AirUpDraft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         if(this.pLayerInUpdraft)
         {
             if(this.playerMovement.isGlidingKeyDown())

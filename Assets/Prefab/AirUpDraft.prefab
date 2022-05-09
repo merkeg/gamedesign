@@ -153,5 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60860d400c479240ab26cc989082fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpDraftForce: 40
-  maxVelocity: 20
+  UpDraftForce: 100
+  maxVelocity: 30
