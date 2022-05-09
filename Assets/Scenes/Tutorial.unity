@@ -5251,11 +5251,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6701563129484815985, guid: a299f0160b26a8e4882ad0d72ac0ea6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6701563129484815985, guid: a299f0160b26a8e4882ad0d72ac0ea6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8046011018056724853, guid: a299f0160b26a8e4882ad0d72ac0ea6a, type: 3}
       propertyPath: m_Name
@@ -5311,14 +5311,8 @@ CompositeCollider2D:
         Y: -300000000
       - X: -175000000
         Y: -225000000
-      - X: -199999900
-        Y: -225000000
-      - X: -199999900
-        Y: -225000041
-      - X: -199999959
-        Y: -225000100
       - X: -250000000
-        Y: -225000100
+        Y: -225000000
       - X: -250000000
         Y: -300000000
       - X: -675000000
@@ -5991,7 +5985,7 @@ CompositeCollider2D:
       - {x: -5.0000296, y: -30}
       - {x: -17.5, y: -29.999971}
       - {x: -17.500029, y: -22.5}
-      - {x: -25, y: -22.50004}
+      - {x: -25, y: -22.500029}
       - {x: -25.000029, y: -30}
       - {x: -67.5, y: -29.999971}
       - {x: -67.50003, y: 35}

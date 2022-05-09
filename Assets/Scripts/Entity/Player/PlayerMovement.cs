@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 localScale;
 
     private Animator animator;
+
+    private int groundCollisions = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
         this.slopeCheck();
         this.move();
 
-        Debug.Log(this.playerBody.velocity.x);
         this.animator.SetFloat("speedX", Mathf.Abs(this.playerBody.velocity.x));
         this.animator.SetFloat("speedY", this.playerBody.velocity.y);
         this.animator.SetBool("Grounded", this.isGrounded);
@@ -188,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void glide()
     {
-        if ((Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift)) && (this.playerBody.velocity.y <= 0))
+        if ((Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift)) && (this.playerBody.velocity.y <= 0) && this.groundCollisions <= 0)
         {
             this.playerBody.gravityScale = this.glideGravityScale;
             this.animator.SetBool("Glide", true);
@@ -248,6 +249,24 @@ public class PlayerMovement : MonoBehaviour
         else
         { //No Movemnt so we dont want to go slide down Slopes
             this.playerBody.sharedMaterial = Fullfriction;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("Hey");
+        if((this.groundLayer.value & (1 << col.gameObject.layer)) > 0)
+        {
+            Debug.Log("N");
+            this.groundCollisions++;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if((this.groundLayer.value & (1 << col.gameObject.layer)) > 0)
+        {
+            this.groundCollisions--;
         }
     }
 }
