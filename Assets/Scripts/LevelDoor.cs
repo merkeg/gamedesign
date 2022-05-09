@@ -15,6 +15,10 @@ public class LevelDoor : MonoBehaviour
     public float errorMessageTime = 2.5f;
     private float errorMessageTimer = 2.5f;
     public string errorMessage = "You need {0} more feathers!";
+
+    public GameObject eText;
+    private float EelaspedTime = 0;
+    private float ETimeToShow = 2;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,8 @@ public class LevelDoor : MonoBehaviour
         {
             this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.onSprite;
         }
+
+        eText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -36,6 +42,7 @@ public class LevelDoor : MonoBehaviour
     {
         if(this.PlayerIsAtTheDoor)
         {
+            this.EelaspedTime += Time.deltaTime;
             if(Input.GetKeyDown(KeyCode.E))
             {
                 if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
@@ -45,6 +52,19 @@ public class LevelDoor : MonoBehaviour
                     this.text.text = string.Format(this.errorMessage, this.NeededFeathers - GameManager.Instance.getPesistentFeatherCount());
                 }
             }
+        }
+        else
+        {
+            this.EelaspedTime = 0;
+        }
+
+        if(this.EelaspedTime >= this.ETimeToShow)
+        {
+            eText.SetActive(true);
+        }
+        else
+        {
+            eText.SetActive(false);
         }
 
         this.errorMessageTimer += Time.deltaTime;

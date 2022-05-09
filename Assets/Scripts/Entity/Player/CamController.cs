@@ -10,6 +10,8 @@ public class CamController : MonoBehaviour
     public float darkZoomBuffer = 3;
     public float darkZoomScale = 0.5f;
 
+    public float darknessIntesityScale = 0.5f;
+
     public static float defaulZoom = 17;
     private float desiredZoom = 17;
 
@@ -36,7 +38,7 @@ public class CamController : MonoBehaviour
     {
         this.trySetDiseredZoom(defaulZoom, 0, 0);
 
-        float darkZoom = (1 - this.vignette.GetIntensity()) * defaulZoom;
+        float darkZoom = (1 - this.vignette.GetIntensity() * this.darknessIntesityScale) * defaulZoom;
         darkZoom += this.darkZoomBuffer;
         if(darkZoom < defaulZoom)
         {

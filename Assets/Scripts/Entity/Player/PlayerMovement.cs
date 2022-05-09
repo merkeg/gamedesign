@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("JumpAndGlide")]
     public float JumpForce = 10;
+    public float JumpNerfVelocityScale = 0.5f;
     public float jumpVelocityYScale = 1;
     public float glideGravityScale = 0.5f;
 
@@ -40,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 localScale;
 
     private Animator animator;
+
+    private int groundCollisions = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -80,7 +83,6 @@ public class PlayerMovement : MonoBehaviour
         this.slopeCheck();
         this.move();
 
-        Debug.Log(this.playerBody.velocity.x);
         this.animator.SetFloat("speedX", Mathf.Abs(this.playerBody.velocity.x));
         this.animator.SetFloat("speedY", this.playerBody.velocity.y);
         this.animator.SetBool("Grounded", this.isGrounded);
@@ -103,7 +105,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if(this.isGrounded)
+            Debug.Log("1");
+            if(this.isGrounded && this.jumpCounter > 0) //We also check if jumpcounter > 0 so that 
             {
                 if(this.playerBody.velocity.y < 0)
                 {
@@ -116,8 +119,16 @@ public class PlayerMovement : MonoBehaviour
                 {
                     this.playerBody.velocity = new Vector2(this.playerBody.velocity.x, this.playerBody.velocity.y * this.jumpVelocityYScale);
                 }
-                this.playerBody.AddForce(new Vector2(0, this.JumpForce), ForceMode2D.Impulse);
-                this.jumpCounter--;
+
+                //jumpNerf, so velocity.y does not get to big, when we spam jump. Since unity drag is not like air resitens
+                float jumpNerf = this.playerBody.velocity.y * this.JumpNerfVelocityScale;
+
+                if(jumpNerf <= this.JumpForce)
+                {
+                    this.playerBody.AddForce(new Vector2(0, this.JumpForce - this.playerBody.velocity.y * this.JumpNerfVelocityScale), ForceMode2D.Impulse);
+                    this.jumpCounter--;
+                }
+
             }
         }
     }
@@ -129,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(this.isOnSlope)
             {
+                Debug.Log("OnSLope");
                 this.slopeMove();
             }
             else
@@ -186,9 +198,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public bool isGlidingKeyDown()
+    {
+        if(Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void glide()
     {
-        if (Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
+        if (this.isGlidingKeyDown() && (this.playerBody.velocity.y <= 0) && this.groundCollisions <= 0)
         {
             this.playerBody.gravityScale = this.glideGravityScale;
             this.animator.SetBool("Glide", true);
@@ -249,5 +272,31 @@ public class PlayerMovement : MonoBehaviour
         { //No Movemnt so we dont want to go slide down Slopes
             this.playerBody.sharedMaterial = Fullfriction;
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if((this.groundLayer.value & (1 << col.gameObject.layer)) > 0)
+        {
+            this.groundCollisions++;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if((this.groundLayer.value & (1 << col.gameObject.layer)) > 0)
+        {
+            this.groundCollisions--;
+        }
+    }
+
+    public void ResetJumpCounter()
+    {
+        this.jumpCounter = 1;
+    }
+
+    public void SetJumpCounter(int jumpCounter)
+    {
+        this.jumpCounter = jumpCounter;
     }
 }
