@@ -154,4 +154,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpDraftForce: 40
-  maxVelocity: 40
+  maxVelocity: 20

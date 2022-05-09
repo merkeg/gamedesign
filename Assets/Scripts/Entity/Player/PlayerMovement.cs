@@ -105,7 +105,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if(this.isGrounded)
+            Debug.Log("1");
+            if(this.isGrounded && this.jumpCounter > 0) //We also check if jumpcounter > 0 so that 
             {
                 if(this.playerBody.velocity.y < 0)
                 {
@@ -139,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(this.isOnSlope)
             {
+                Debug.Log("OnSLope");
                 this.slopeMove();
             }
             else
@@ -286,5 +288,15 @@ public class PlayerMovement : MonoBehaviour
         {
             this.groundCollisions--;
         }
+    }
+
+    public void ResetJumpCounter()
+    {
+        this.jumpCounter = 1;
+    }
+
+    public void SetJumpCounter(int jumpCounter)
+    {
+        this.jumpCounter = jumpCounter;
     }
 }

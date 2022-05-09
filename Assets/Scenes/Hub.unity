@@ -1614,3 +1614,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
+--- !u!1001 &4835941417005807743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -123.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571530, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835941415847571531, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
+      propertyPath: m_Name
+      value: Jumpolin
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7b7670f27f260f4f8e5b68ccbf8e594, type: 3}
