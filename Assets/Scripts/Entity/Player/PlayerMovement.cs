@@ -196,9 +196,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public bool isGlidingKeyDown()
+    {
+        if(Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private void glide()
     {
-        if ((Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift)) && (this.playerBody.velocity.y <= 0) && this.groundCollisions <= 0)
+        if (this.isGlidingKeyDown() && (this.playerBody.velocity.y <= 0) && this.groundCollisions <= 0)
         {
             this.playerBody.gravityScale = this.glideGravityScale;
             this.animator.SetBool("Glide", true);

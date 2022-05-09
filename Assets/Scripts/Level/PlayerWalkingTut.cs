@@ -22,12 +22,10 @@ public class PlayerWalkingTut : MonoBehaviour
     {
         if(this.player.transform.position == this.oldPlayerPos)
         {
-            Debug.Log("True");
             this.elaspedTime += Time.deltaTime;
         }
         else
         {
-            Debug.Log(this.player.position);
             this.elaspedTime = 0;
             this.oldPlayerPos = this.player.position;
         }
