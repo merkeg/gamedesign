@@ -739,8 +739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5977154474463427635}
   minZoom: 12
-  darkZoomBuffer: 3
+  darkZoomBuffer: 1
   darkZoomScale: 0.5
+  darknessIntesityScale: 0.5
 --- !u!1 &8627174912567533887
 GameObject:
   m_ObjectHideFlags: 0
