@@ -407,7 +407,8 @@ MonoBehaviour:
   AirMoveSpeed: 40
   AirDrag: 2
   maxAirVelocityFromInput: 100000
-  JumpForce: 35
+  JumpForce: 33
+  JumpNerfVelocityScale: 0.5
   jumpVelocityYScale: 0
   glideGravityScale: 0.25
   topLeft: {fileID: 5977154476405118725}
