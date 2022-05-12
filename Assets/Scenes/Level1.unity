@@ -1092,6 +1092,14 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5020415050341814838, guid: 517a59fa0b2c91f42ba62c3bffd1d261, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2373613869262520168, guid: 211fa86c8da51fc40887b60468bad28f, type: 3}
+    - target: {fileID: 5020415050341814838, guid: 517a59fa0b2c91f42ba62c3bffd1d261, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e1a91008b4100e4787a96c62ac85dc6, type: 2}
     - target: {fileID: 5977154475673115778, guid: 517a59fa0b2c91f42ba62c3bffd1d261, type: 3}
       propertyPath: m_Name
       value: PlayerContainer
