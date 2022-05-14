@@ -15,6 +15,8 @@ public class VignetteInterface : MonoBehaviour
 
     public float masxSize = 40;
 
+    //public AnimationCurve plot = new AnimationCurve();
+
     void Start()
     {
         //VolumeProfile.TryGet<Vignette>(out _vignette);
@@ -40,11 +42,17 @@ public class VignetteInterface : MonoBehaviour
         newScale = newScale * size;
         this.mask.localScale = newScale;
         //Debug.Log(this.mask.localScale);
-
+        //plot.AddKey(Time.timeSinceLevelLoad, this.GetIntensity());
     }
 
     public void AddVignetteValue(float intensity)
     {
+        if(this.size <= this.masxSize * 2/3 && this.size >= this.masxSize * 1/3)
+        {
+            Debug.Log("YES");
+            intensity = intensity / 2;
+        }
+
         this.size = this.size - this.masxSize * intensity;
     }
 
