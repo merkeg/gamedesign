@@ -3994,38 +3994,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Global Light 2D
       objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_Intensity
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: -176765015
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[2]
-      value: -651973463
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[3]
-      value: -738806103
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[4]
-      value: -1092642315
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[5]
-      value: -393069051
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528212683431702070, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[6]
-      value: 1563293525
-      objectReference: {fileID: 0}
     - target: {fileID: 7528212683431702071, guid: 1ea5b37a4b95b2d43af4d43d75df3630, type: 3}
       propertyPath: m_RootOrder
       value: 18
