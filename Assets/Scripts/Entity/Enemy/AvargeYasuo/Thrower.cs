@@ -5,10 +5,11 @@ using UnityEngine;
 public class Thrower : MonoBehaviour
 {
     public float trhowCD = 4;
-    private float throwCdCounter = 1;
+    public float throwCdCounter = 1;
 
     public float ImpulseForceX = 25;
     public float ImpulseForceY = 10;
+    public float gravityScale = 1f;
 
     public Transform pos;
     public GameObject Timo;
@@ -24,7 +25,10 @@ public class Thrower : MonoBehaviour
         if(this.throwCdCounter <= 0)
         {
             GameObject timo =  Instantiate(this.Timo, this.pos.position, Quaternion.identity);
-            timo.GetComponent<Timo>().setForce(this.ImpulseForceX, this.ImpulseForceY);
+            Timo timeScrupt = timo.GetComponent<Timo>();
+            timeScrupt.setForce(this.ImpulseForceX, this.ImpulseForceY);
+            timeScrupt.gravityScale = this.gravityScale;
+            
             this.throwCdCounter = this.trhowCD;
         }
 

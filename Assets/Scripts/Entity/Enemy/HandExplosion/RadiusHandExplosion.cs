@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class RadiusHandExplosion : MonoBehaviour
 {
-    public float Damage = 0.1f;
+    public HandExplosion hand;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Schoppa");
-        Invoke("bye", 1f);
+        
     }
 
     // Update is called once per frame
@@ -17,17 +16,20 @@ public class Explosion : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("Whoppa");
-            other.gameObject.GetComponent<Entity.Damageable>().TakeDamage(this.Damage);
+            this.hand.PlayerInRange = true;
         }
     }
 
-    private void bye()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        GameObject.Destroy(this.gameObject);
+        if(other.gameObject.tag == "Player")
+        {
+            this.hand.PlayerInRange = false;
+        }
     }
 }
