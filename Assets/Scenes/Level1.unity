@@ -1966,7 +1966,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4101830957865676836, guid: 0c5cc10440519d8429f6b7d749fe3500, type: 3}
       propertyPath: lightLossPerSecond
-      value: -5.05
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4101830957865676837, guid: 0c5cc10440519d8429f6b7d749fe3500, type: 3}
       propertyPath: m_Name
