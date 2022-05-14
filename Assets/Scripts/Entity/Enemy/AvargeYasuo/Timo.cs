@@ -6,11 +6,15 @@ public class Timo : MonoBehaviour
 {
     public float ImpulseForceX = 25;
     public float ImpulseForceY = 10;
+    public float gravityScale = 1;
     public float Damage = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<Rigidbody2D>().AddForce(new Vector2(this.ImpulseForceX, this.ImpulseForceY), ForceMode2D.Impulse);
+        Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
+        rb.gravityScale = this.gravityScale;
+        rb.AddForce(new Vector2(this.ImpulseForceX, this.ImpulseForceY), ForceMode2D.Impulse);
+        
         if(this.ImpulseForceX > 0)
         {
             this.transform.localScale *= -1;
