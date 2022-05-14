@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9097644035912351499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 0.52, z: 0}
+  m_LocalPosition: {x: 0.69, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9097644037473236073}
@@ -158,5 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trhowCD: 4
+  throwCdCounter: 1
+  ImpulseForceX: 25
+  ImpulseForceY: 10
+  gravityScale: 1
   pos: {fileID: 9097644035912351500}
   Timo: {fileID: 6991529723988005890, guid: 5990855ecdbff88408805dd740b9505b, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Thrower : MonoBehaviour
 {
     public float trhowCD = 4;
-    private float throwCdCounter = 1;
+    public float throwCdCounter = 1;
 
     public float ImpulseForceX = 25;
     public float ImpulseForceY = 10;
