@@ -51,6 +51,9 @@ TagManager:
   - name: MidGround1
     uniqueID: 3556161193
     locked: 0
+  - name: ForegroundNoLight
+    uniqueID: 2632422321
+    locked: 0
   - name: ForeGround
     uniqueID: 3202324981
     locked: 0
