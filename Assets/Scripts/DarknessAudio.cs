@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DarknessAudio : MonoBehaviour
 {
-    public AudioSource source;
-    public AudioClip darkness;
+    public AudioSource darknessSource;
+    public AudioSource heartbeatSource;
+    public AudioClip heartbeat;
 
     private VignetteInterface vignette;
 
@@ -16,6 +17,12 @@ public class DarknessAudio : MonoBehaviour
 
     private void Update()
     {
-        this.source.volume = this.vignette.GetIntensity() / 4;
+        this.darknessSource.volume = this.vignette.GetIntensity() / 4;
+
+        // Play Heartbeat sound moments before death
+        if (this.vignette.GetIntensity() >= 0.8f && !this.heartbeatSource.isPlaying)
+        {
+            this.heartbeatSource.PlayOneShot(this.heartbeat);
+        }
     }
 }
