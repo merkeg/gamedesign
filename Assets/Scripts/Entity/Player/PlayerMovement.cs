@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     public PhysicsMaterial2D Fullfriction;
     public PhysicsMaterial2D ZeroFriction;
 
+    [Header("Paricals")]
+    public int DoubleJumpCount = 25; 
+
     private Vector2 moveDirection;
     private bool isGrounded;
     private Rigidbody2D playerBody;
@@ -43,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     private int groundCollisions = 0;
+
+    public ParticleSystem doubleJumpParticel;
     // Start is called before the first frame update
     void Start()
     {
@@ -126,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
                 if(jumpNerf <= this.JumpForce)
                 {
                     this.playerBody.AddForce(new Vector2(0, this.JumpForce - this.playerBody.velocity.y * this.JumpNerfVelocityScale), ForceMode2D.Impulse);
+                    this.doubleJumpParticel.Emit(this.DoubleJumpCount);
                     this.jumpCounter--;
                 }
 
