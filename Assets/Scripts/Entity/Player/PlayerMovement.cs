@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public PhysicsMaterial2D ZeroFriction;
 
     [Header("Paricals")]
-    public int DoubleJumpCount = 25; 
+    public int DoubleJumpCount = 25;
 
     private Vector2 moveDirection;
     private bool isGrounded;
@@ -48,10 +48,12 @@ public class PlayerMovement : MonoBehaviour
     private int groundCollisions = 0;
 
     public ParticleSystem doubleJumpParticel;
+    private PlayerAudio playerAudio;
     // Start is called before the first frame update
     void Start()
     {
         this.playerBody = this.GetComponent<Rigidbody2D>();
+        this.playerAudio = this.transform.GetChild(9).GetComponent<PlayerAudio>();
 
         this.localScale = this.transform.localScale;
         this.animator = this.gameObject.GetComponent<Animator>();
@@ -110,15 +112,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("1");
-            if(this.isGrounded && this.jumpCounter > 0) //We also check if jumpcounter > 0 so that 
+            //Debug.Log("1");
+            if(this.isGrounded && this.jumpCounter > 0) //We also check if jumpcounter > 0 so that
             {
                 if(this.playerBody.velocity.y < 0)
                 {
                     this.playerBody.velocity = new Vector2(this.playerBody.velocity.x, this.playerBody.velocity.y * this.jumpVelocityYScale);
                 }
                 this.playerBody.AddForce(new Vector2(0, this.JumpForce), ForceMode2D.Impulse);
-            } 
+                this.playerAudio.playJump();
+            }
             else if (this.jumpCounter > 0) {
                 if(this.playerBody.velocity.y < 0)
                 {
@@ -132,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     this.playerBody.AddForce(new Vector2(0, this.JumpForce - this.playerBody.velocity.y * this.JumpNerfVelocityScale), ForceMode2D.Impulse);
                     this.doubleJumpParticel.Emit(this.DoubleJumpCount);
+                    playerAudio.playCape();
                     this.jumpCounter--;
                 }
 
@@ -221,11 +225,18 @@ public class PlayerMovement : MonoBehaviour
         {
             this.playerBody.gravityScale = this.glideGravityScale;
             this.animator.SetBool("Glide", true);
+            // Play sound once and only once
+            if(!this.playerAudio.isPlaying() && !this.playerAudio.InAir)
+            {
+                this.playerAudio.playChute();
+                this.playerAudio.InAir = true;
+            }
         }
         else
         {
             this.playerBody.gravityScale = 1f;
             this.animator.SetBool("Glide", false);
+            this.playerAudio.InAir = false;
         }
     }
 

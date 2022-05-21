@@ -11,6 +11,8 @@ public class AirUpDraft : MonoBehaviour
     private PlayerMovement playerMovement;
     private bool pLayerInUpdraft = false;
     private Animator playerAnimatoir;
+
+    public bool enableSlefMade = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,11 @@ public class AirUpDraft : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!this.enableSlefMade)
+        {
+            return;
+        }
+
         if(this.pLayerInUpdraft)
         {
             if(this.playerMovement.isGlidingKeyDown())
