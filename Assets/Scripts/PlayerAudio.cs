@@ -7,6 +7,7 @@ public class PlayerAudio : MonoBehaviour
     public AudioSource source;
     public AudioClip chute;
     public AudioClip cape;
+    public bool InAir { get; set; }
 
     public void playCape()
     {
@@ -17,5 +18,10 @@ public class PlayerAudio : MonoBehaviour
     public void playChute()
     {
         source.PlayOneShot(chute);
+    }
+
+    public bool isPlaying()
+    {
+        return source.isPlaying;
     }
 }

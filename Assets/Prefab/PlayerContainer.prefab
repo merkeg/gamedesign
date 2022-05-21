@@ -4946,7 +4946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 2525549051631209025}
   chute: {fileID: 8300000, guid: 95c2bf12a982bdb44bf3d738d83311c7, type: 3}
-  cape: {fileID: 8300000, guid: 16296622278dd644db15a1c6dd223a04, type: 3}
+  cape: {fileID: 8300000, guid: 983f901731632d747b37e0361257ad49, type: 3}
 --- !u!1 &569872465618858578
 GameObject:
   m_ObjectHideFlags: 0

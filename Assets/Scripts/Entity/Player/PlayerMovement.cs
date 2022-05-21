@@ -224,11 +224,18 @@ public class PlayerMovement : MonoBehaviour
         {
             this.playerBody.gravityScale = this.glideGravityScale;
             this.animator.SetBool("Glide", true);
+            // Play sound once and only once
+            if(!this.playerAudio.isPlaying() && !this.playerAudio.InAir)
+            {
+                this.playerAudio.playChute();
+                this.playerAudio.InAir = true;
+            }
         }
         else
         {
             this.playerBody.gravityScale = 1f;
             this.animator.SetBool("Glide", false);
+            this.playerAudio.InAir = false;
         }
     }
 
