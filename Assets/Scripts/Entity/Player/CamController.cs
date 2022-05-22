@@ -15,6 +15,8 @@ public class CamController : MonoBehaviour
     public static float defaulZoom = 17;
     private float desiredZoom = 17;
 
+    public float offSetY = 0f;
+
     private VignetteInterface vignette;
 
     private int currentPrio = 0;
@@ -27,7 +29,7 @@ public class CamController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = new Vector3(this.player.position.x, this.player.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(this.player.position.x, this.player.position.y + this.offSetY, this.transform.position.z);
 
         
 
