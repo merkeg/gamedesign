@@ -32,6 +32,7 @@ public class LevelDoor : MonoBehaviour
         if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
         {
             this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.onSprite;
+            this.transform.GetChild(2).gameObject.SetActive(true);
         }
 
         eText.SetActive(false);
