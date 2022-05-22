@@ -8,23 +8,22 @@ public class Timo : MonoBehaviour
     public float ImpulseForceY = 10;
     public float gravityScale = 1;
     public float Damage = 0.1f;
+    public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody2D rb = this.GetComponent<Rigidbody2D>();
         rb.gravityScale = this.gravityScale;
         rb.AddForce(new Vector2(this.ImpulseForceX, this.ImpulseForceY), ForceMode2D.Impulse);
-        
-        if(this.ImpulseForceX > 0)
-        {
-            this.transform.localScale *= -1;
-        }
+        this.rb = rb;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Vector2 v = this.rb.velocity;
+        float angle = Vector2.Angle(Vector2.left, v);
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

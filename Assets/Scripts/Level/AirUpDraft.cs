@@ -46,12 +46,26 @@ public class AirUpDraft : MonoBehaviour
             }
             else
             {
+                Debug.Log("28");
                 this.playerAnimatoir.SetBool("InUpDraft", false);
             }
         }
         else
         {
+            Debug.Log("30");
             this.playerAnimatoir.SetBool("InUpDraft", false);
+        }
+        Debug.Log(this.playerAnimatoir.GetBool("InUpDraft"));
+    }
+
+    private void LateUpdate()
+    {
+        if(this.pLayerInUpdraft)
+        {
+            if(this.playerMovement.isGlidingKeyDown())
+            {
+                this.playerAnimatoir.SetBool("InUpDraft", true);
+            }
         }
     }
 
