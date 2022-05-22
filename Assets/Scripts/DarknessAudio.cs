@@ -20,7 +20,7 @@ public class DarknessAudio : MonoBehaviour
         this.darknessSource.volume = this.vignette.GetIntensity() / 4;
 
         // Play Heartbeat sound moments before death
-        if (this.vignette.GetIntensity() >= 0.8f && !this.heartbeatSource.isPlaying)
+        if (this.vignette.GetIntensity() >= 0.75f && !this.heartbeatSource.isPlaying)
         {
             this.heartbeatSource.PlayOneShot(this.heartbeat);
         }
