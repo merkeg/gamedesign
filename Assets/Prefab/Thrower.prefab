@@ -69,9 +69,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -651973463
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ca35784620b8baf49a1ad130ac9caa56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 420c4933bbb54964785068ce76228bd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9097644035912351499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 0.45, z: 0}
+  m_LocalPosition: {x: 0.27, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9097644037473236073}
@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9097644037473236073}
   - component: {fileID: 9097644037473235991}
+  - component: {fileID: 5548635675391587260}
   m_Layer: 0
   m_Name: Thrower
   m_TagString: Untagged
@@ -164,3 +165,22 @@ MonoBehaviour:
   gravityScale: 1
   pos: {fileID: 9097644035912351500}
   Timo: {fileID: 6991529723988005890, guid: 5990855ecdbff88408805dd740b9505b, type: 3}
+--- !u!95 &5548635675391587260
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9097644037473235990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 038a073f5c0223d4192a711b6888b329, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

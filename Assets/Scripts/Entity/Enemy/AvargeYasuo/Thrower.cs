@@ -13,10 +13,11 @@ public class Thrower : MonoBehaviour
 
     public Transform pos;
     public GameObject Timo;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.animator = this.gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +25,7 @@ public class Thrower : MonoBehaviour
     {
         if(this.throwCdCounter <= 0)
         {
+            this.animator.Play("Base Layer.Open", 0);
             GameObject timo =  Instantiate(this.Timo, this.pos.position, Quaternion.identity);
             Timo timeScrupt = timo.GetComponent<Timo>();
             timeScrupt.setForce(this.ImpulseForceX, this.ImpulseForceY);
@@ -34,4 +36,5 @@ public class Thrower : MonoBehaviour
 
         this.throwCdCounter -= Time.deltaTime;
     }
+
 }
