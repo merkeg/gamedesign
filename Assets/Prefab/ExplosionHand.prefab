@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5884053819847181021}
   - component: {fileID: 5884053819847181020}
   - component: {fileID: 5884053819847180995}
+  - component: {fileID: 981797927806109441}
   m_Layer: 0
   m_Name: Hand_Enemy
   m_TagString: Untagged
@@ -127,6 +128,32 @@ MonoBehaviour:
   addedDrag: 2
   secsTillBoom: 1
   explosion: {fileID: 2034735946605441151, guid: 6f31aeb279512eb4ebbe2d97930eb178, type: 3}
+--- !u!114 &981797927806109441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884053819847180994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000095d2519ca9c776f5a9ac23d9a9b6f6d3b193e79cf599dfbe053e92e855f72d5d
+  m_ShapePath:
+  - {x: -0.25609413, y: -0.1889154, z: 0}
+  - {x: 0.22726658, y: -0.18800771, z: 0}
+  - {x: 0.21909794, y: 0.21145159, z: 0}
+  - {x: -0.2617822, y: 0.22050902, z: 0}
+  m_ShapePathHash: -1854133769
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -205258
 --- !u!1 &5884053820185355387
 GameObject:
   m_ObjectHideFlags: 0
