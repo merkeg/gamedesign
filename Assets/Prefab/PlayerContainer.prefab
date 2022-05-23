@@ -5661,6 +5661,7 @@ GameObject:
   - component: {fileID: 7437963824011059396}
   - component: {fileID: 3716432407046572509}
   - component: {fileID: 8706611745663238459}
+  - component: {fileID: 5584724519928544774}
   m_Layer: 11
   m_Name: DarknessAnimation
   m_TagString: Untagged
@@ -5747,6 +5748,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darknessMask: {fileID: 672075091985931311}
   player: {fileID: 5977154474463427635}
+  animator: {fileID: 0}
+--- !u!95 &5584724519928544774
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366443107166961878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 91c2efd3a420c484caf842aba5495629, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8253387816313146819
 GameObject:
   m_ObjectHideFlags: 0
@@ -5880,8 +5901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VolumeProfile: {fileID: 11400000, guid: 49be8f3df834a5147837a422d8c4f20a, type: 2}
   mask: {fileID: 672075091985931311}
-  size: 9
-  masxSize: 9
+  size: 11
+  masxSize: 11
 --- !u!114 &4731522140986422160
 MonoBehaviour:
   m_ObjectHideFlags: 0

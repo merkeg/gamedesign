@@ -6,10 +6,12 @@ public class DarknessAnimationFollow : MonoBehaviour
 {
     public Transform darknessMask;
     public Transform player;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        
+        this.animator = this.gameObject.GetComponent<Animator>();
+        //this.animator.Play("Base Layer.DarknessLoop1234567432", 0);
     }
 
     // Update is called once per frame
