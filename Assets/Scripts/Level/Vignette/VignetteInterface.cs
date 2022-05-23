@@ -38,7 +38,8 @@ public class VignetteInterface : MonoBehaviour
         {
             this.size = masxSize;
         }
-        Vector3 newScale = new Vector3(Camera.main.aspect * 15,15, 1);
+        //Vector3 newScale = new Vector3(Camera.main.aspect * 1, 1, 1);
+        Vector3 newScale = new Vector3(1, 1, 1);
         newScale = newScale * size;
         this.mask.localScale = newScale;
         //Debug.Log(this.mask.localScale);
