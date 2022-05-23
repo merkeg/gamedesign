@@ -48,6 +48,7 @@ public class AirUpDraft : MonoBehaviour
     {
         if(!this.enableSlefMade)
         {
+            trySetInAirDraft(false);
             return;
         }
 
