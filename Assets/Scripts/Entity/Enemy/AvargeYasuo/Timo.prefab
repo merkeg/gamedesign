@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3916542597599866437}
   - component: {fileID: 8627433258618261060}
+  - component: {fileID: 6646125951764825034}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -82,6 +83,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6646125951764825034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102131258321580772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000095d2519ca9c776f5a9ac23d9a9b6f6d3b193e79cf599dfbe053e92e855f72d5d
+  m_ShapePath:
+  - {x: 0.00008397598, y: -0.025289634, z: 0}
+  - {x: 0.00047410422, y: -0.035477906, z: 0}
+  - {x: 0.03026125, y: -0.035346698, z: 0}
+  - {x: 0.030416671, y: -0.025338063, z: 0}
+  - {x: 0.060192555, y: -0.02520573, z: 0}
+  - {x: 0.06006056, y: -0.014883437, z: 0}
+  - {x: 0.04047441, y: -0.014883437, z: 0}
+  - {x: 0.040318992, y: -0.005064684, z: 0}
+  - {x: 0.08038687, y: -0.0049546505, z: 0}
+  - {x: 0.08021073, y: 0.0052367738, z: 0}
+  - {x: 0.06008984, y: 0.004909602, z: 0}
+  - {x: 0.059961002, y: 0.0149815325, z: 0}
+  - {x: 0.050167702, y: 0.014987727, z: 0}
+  - {x: 0.04989335, y: 0.025102906, z: 0}
+  - {x: 0.030509023, y: 0.025312273, z: 0}
+  - {x: 0.030509023, y: 0.03526133, z: 0}
+  - {x: -0.03004825, y: 0.034852393, z: 0}
+  - {x: -0.029970314, y: 0.02526238, z: 0}
+  - {x: -0.03991498, y: 0.024920905, z: 0}
+  - {x: -0.040322676, y: 0.014934343, z: 0}
+  - {x: -0.049629893, y: 0.0152779585, z: 0}
+  - {x: -0.050005607, y: 0.004946768, z: 0}
+  - {x: -0.06005974, y: 0.005120546, z: 0}
+  - {x: -0.059973247, y: -0.004874913, z: 0}
+  - {x: -0.04987496, y: -0.004751703, z: 0}
+  - {x: -0.049751528, y: -0.014603905, z: 0}
+  - {x: -0.040145632, y: -0.015096521, z: 0}
+  - {x: -0.04026907, y: -0.024332896, z: 0}
+  m_ShapePathHash: -675415843
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -212254
 --- !u!1 &6991529723988005890
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +183,7 @@ MonoBehaviour:
   ImpulseForceY: 10
   gravityScale: 1
   Damage: 0.1
+  rb: {fileID: 0}
 --- !u!50 &4485183019129293002
 Rigidbody2D:
   serializedVersion: 4
