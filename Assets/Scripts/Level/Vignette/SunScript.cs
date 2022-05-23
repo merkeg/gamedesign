@@ -5,6 +5,8 @@ using UnityEngine;
 public class SunScript : MonoBehaviour
 {
     public int SunID = -1;
+
+    public float RespawnTime = 30f;
     private VignetteInterface vignette;
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,13 @@ public class SunScript : MonoBehaviour
         {
             GameManager.Instance.CollectSun(this.SunID);
             this.vignette.AddVignetteValue(-0.75f);
-            GameObject.Destroy(this.gameObject);
+            Invoke("Reactivate", this.RespawnTime);
+            this.gameObject.SetActive(false);
         }
+    }
+
+    private void Reactivate()
+    {
+        this.gameObject.SetActive(true);
     }
 }

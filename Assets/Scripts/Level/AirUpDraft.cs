@@ -12,6 +12,9 @@ public class AirUpDraft : MonoBehaviour
     private bool pLayerInUpdraft = false;
     private Animator playerAnimatoir;
 
+    private bool hasLock = false;
+    private static bool isLocked = false;
+
     public bool enableSlefMade = true;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,19 @@ public class AirUpDraft : MonoBehaviour
         
     }
 
+    private void trySetInAirDraft(bool inAirDraft)
+    {
+        if(AirUpDraft.isLocked && !this.hasLock)
+        {
+            return;
+        }
+
+        AirUpDraft.isLocked = inAirDraft;
+        this.hasLock = inAirDraft;
+        this.playerAnimatoir.SetBool("InUpDraft", inAirDraft);
+
+    }
+
     private void FixedUpdate()
     {
         if(!this.enableSlefMade)
@@ -42,30 +58,16 @@ public class AirUpDraft : MonoBehaviour
                 if(this.playerBody.velocity.y <= this.maxVelocity)
                 this.playerBody.AddForce(new Vector2(0, this.UpDraftForce), ForceMode2D.Force);
 
-                this.playerAnimatoir.SetBool("InUpDraft", true);
+                trySetInAirDraft(true);
             }
             else
             {
-                Debug.Log("28");
-                this.playerAnimatoir.SetBool("InUpDraft", false);
+                trySetInAirDraft(false);
             }
         }
         else
         {
-            Debug.Log("30");
-            this.playerAnimatoir.SetBool("InUpDraft", false);
-        }
-        Debug.Log(this.playerAnimatoir.GetBool("InUpDraft"));
-    }
-
-    private void LateUpdate()
-    {
-        if(this.pLayerInUpdraft)
-        {
-            if(this.playerMovement.isGlidingKeyDown())
-            {
-                this.playerAnimatoir.SetBool("InUpDraft", true);
-            }
+            trySetInAirDraft(false);
         }
     }
 
