@@ -43,7 +43,7 @@ public class LevelDoor : MonoBehaviour
             this.transform.GetChild(2).gameObject.SetActive(true);
             if(GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad) >= 0)
             {
-                this.FeatherCountText.text = string.Format("{0}/{1}", GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad), this.FeatherInTHisLevel);
+                this.FeatherCountText.text = string.Format("{0} from {1}", GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad), this.FeatherInTHisLevel);
                 this.FeatherIcon.SetActive(true);
                 this.FeatherCountText.gameObject.SetActive(true);
             }
