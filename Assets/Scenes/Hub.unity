@@ -2378,7 +2378,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2185384820314626698, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256124971548225818, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2491995770905531357, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_IsActive
@@ -2387,6 +2391,10 @@ PrefabInstance:
     - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: LevelToLoad
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
+      propertyPath: FeatherInTHisLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3666377184243163404, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_Name
@@ -2460,7 +2468,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2185384820314626698, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256124971548225818, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2491995770905531357, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_IsActive
@@ -10201,6 +10213,10 @@ PrefabInstance:
     - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: NeededFeathers
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
+      propertyPath: FeatherInTHisLevel
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3666377184243163404, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_Name
@@ -25356,6 +25372,10 @@ PrefabInstance:
     - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: LevelToLoad
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
+      propertyPath: FeatherInTHisLevel
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3666377184243163404, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_Name

@@ -32,9 +32,14 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
+        this.persistentFeathList[1] = new List<int>();
+        this.persistentFeathList[2] = new List<int>();
+        this.persistentFeathList[100] = new List<int>(); //Tut
+        Debug.Log(this.persistentFeathList.ContainsKey(1));
     }
     void Start()
     {
+        
     }
 
     public void Restart()
@@ -164,6 +169,9 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         this.persistentFeathList.Clear();
+        this.persistentFeathList[1] = new List<int>();
+        this.persistentFeathList[2] = new List<int>();
+        this.persistentFeathList[100] = new List<int>(); //Tut
         //this.LoadScene("Hub");
         this.LoadLevelTutorial();
     }
@@ -231,5 +239,17 @@ public class GameManager : MonoBehaviour
     public Vector3? GetCheckPoint()
     {
         return this.checkpoint;
+    }
+
+    public int GetFeatherCountForLevel(int level)
+    {
+        Debug.Log(level);
+        if(this.persistentFeathList.ContainsKey(level))
+        {
+            Debug.Log(this.persistentFeathList[level].Count);
+            return this.persistentFeathList[level].Count;
+        }
+        Debug.Log(this.persistentFeathList);
+        return -1;
     }
 }

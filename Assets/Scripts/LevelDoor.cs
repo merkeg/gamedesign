@@ -19,6 +19,11 @@ public class LevelDoor : MonoBehaviour
     public GameObject eText;
     private float EelaspedTime = 0;
     private float ETimeToShow = 2;
+
+    public TMPro.TMP_Text FeatherCountText;
+    public int FeatherInTHisLevel = -1;
+    public GameObject FeatherIcon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,12 +32,21 @@ public class LevelDoor : MonoBehaviour
             throw new System.Exception("Missing Level to load");
         }
 
+        this.FeatherIcon.SetActive(false);
+        this.FeatherCountText.gameObject.SetActive(false);
+
         //this.text.text = GameManager.Instance.getPesistentFeatherCount() +"/"+ this.NeededFeathers;
         this.text.text = "Level " + (this.LevelToLoad);
         if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
         {
             this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.onSprite;
             this.transform.GetChild(2).gameObject.SetActive(true);
+            if(GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad) >= 0)
+            {
+                this.FeatherCountText.text = string.Format("{0}/{1}", GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad), this.FeatherInTHisLevel);
+                this.FeatherIcon.SetActive(true);
+                this.FeatherCountText.gameObject.SetActive(true);
+            }
         }
 
         eText.SetActive(false);
