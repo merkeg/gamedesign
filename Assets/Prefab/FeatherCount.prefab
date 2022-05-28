@@ -285,6 +285,7 @@ MonoBehaviour:
   midTime: 1
   startScale: 2
   Tscale: 0.5
+  FeatherIcon: {fileID: 3863913555889122348}
 --- !u!1 &6249729403966032699
 GameObject:
   m_ObjectHideFlags: 0

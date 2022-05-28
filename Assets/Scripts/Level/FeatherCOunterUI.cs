@@ -20,7 +20,9 @@ public class FeatherCOunterUI : MonoBehaviour
     public float Tscale = 0.5f;
     private float t = 0;
 
-    private Vector3 iAmLazy;
+    public RectTransform FeatherIcon;
+    private Vector3 FeatherIconStartPos = new Vector3(-177, 131, 0);
+    private Vector3 FeaterIconEndPos = new Vector3(-237, 131, 0);
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,9 @@ public class FeatherCOunterUI : MonoBehaviour
         }
         this.counter.anchoredPosition = startPos;
         //this.iAmLazy = this.counter.localScale *= startScale;
+        this.FeatherIcon.localScale *= 2;
+        this.text.fontSize = 40;
+        this.FeatherIcon.anchoredPosition = this.FeatherIconStartPos;
     }
 
     // Update is called once per frame
@@ -41,7 +46,9 @@ public class FeatherCOunterUI : MonoBehaviour
         {
             t += Time.deltaTime * this.Tscale;
             this.counter.anchoredPosition = Vector3.Lerp(startPos, endPos, t);
-            // this.counter.localScale = Vector3.Lerp(iAmLazy, Vector3.one, t); Scaling fucks us
+            this.FeatherIcon.localScale = Vector3.Lerp(Vector3.one * 2, Vector3.one, t);
+            this.text.fontSize =  Vector3.Lerp(Vector3.one * 40, Vector3.one * 20, t).x;
+            this.FeatherIcon.anchoredPosition = Vector3.Lerp(this.FeatherIconStartPos, this.FeaterIconEndPos, t);
         }
     }
 }
