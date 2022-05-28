@@ -23,7 +23,6 @@ public class VignetteInterface : MonoBehaviour
 
         //_vignette.intensity.overrideState = true;
 
-        Debug.Log(Camera.main.aspect);
 
         this.size = this.masxSize;
     }

@@ -10,6 +10,7 @@ public class LevelDoor : MonoBehaviour
     public TMPro.TMP_Text text;
 
     public Sprite onSprite;
+    public GameObject graphics;
     private bool PlayerIsAtTheDoor = false;
 
     public float errorMessageTime = 2.5f;
@@ -19,6 +20,17 @@ public class LevelDoor : MonoBehaviour
     public GameObject eText;
     private float EelaspedTime = 0;
     private float ETimeToShow = 2;
+
+    public TMPro.TMP_Text FeatherCountText;
+    public int FeatherInTHisLevel = -1;
+    public GameObject FeatherIcon;
+
+    public GameObject inGrahpic;
+    public GameObject outGraphic;
+
+    public float inRotateSpeed = 2;
+    public float outRotateSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,15 +39,27 @@ public class LevelDoor : MonoBehaviour
             throw new System.Exception("Missing Level to load");
         }
 
+        this.FeatherIcon.SetActive(false);
+        this.FeatherCountText.gameObject.SetActive(false);
+
         //this.text.text = GameManager.Instance.getPesistentFeatherCount() +"/"+ this.NeededFeathers;
         this.text.text = "Level " + (this.LevelToLoad);
         if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
         {
-            this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.onSprite;
+            this.graphics.SetActive(true);
             this.transform.GetChild(2).gameObject.SetActive(true);
+            if(GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad) >= 0)
+            {
+                this.FeatherCountText.text = string.Format("{0} of {1}", GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad), this.FeatherInTHisLevel);
+                this.FeatherIcon.SetActive(true);
+                this.FeatherCountText.gameObject.SetActive(true);
+            }
         }
 
         eText.SetActive(false);
+
+        this.inGrahpic.transform.eulerAngles += Vector3.forward * Random.Range(0, 360);
+        this.outGraphic.transform.eulerAngles += Vector3.forward * Random.Range(0, 360);
     }
 
     // Update is called once per frame
@@ -74,6 +98,9 @@ public class LevelDoor : MonoBehaviour
             this.errorMessageTimer = 0f;
             this.text.text = "Level " + (this.LevelToLoad);
         }
+
+        this.inGrahpic.transform.eulerAngles += Vector3.forward * this.inRotateSpeed * Time.deltaTime;
+        this.outGraphic.transform.eulerAngles += Vector3.forward * this.outRotateSpeed * Time.deltaTime; 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
