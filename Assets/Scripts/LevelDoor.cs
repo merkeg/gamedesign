@@ -10,6 +10,7 @@ public class LevelDoor : MonoBehaviour
     public TMPro.TMP_Text text;
 
     public Sprite onSprite;
+    public GameObject graphics;
     private bool PlayerIsAtTheDoor = false;
 
     public float errorMessageTime = 2.5f;
@@ -23,6 +24,12 @@ public class LevelDoor : MonoBehaviour
     public TMPro.TMP_Text FeatherCountText;
     public int FeatherInTHisLevel = -1;
     public GameObject FeatherIcon;
+
+    public GameObject inGrahpic;
+    public GameObject outGraphic;
+
+    public float inRotateSpeed = 2;
+    public float outRotateSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +46,7 @@ public class LevelDoor : MonoBehaviour
         this.text.text = "Level " + (this.LevelToLoad);
         if(GameManager.Instance.getPesistentFeatherCount() >= this.NeededFeathers)
         {
-            this.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = this.onSprite;
+            this.graphics.SetActive(true);
             this.transform.GetChild(2).gameObject.SetActive(true);
             if(GameManager.Instance.GetFeatherCountForLevel(this.LevelToLoad) >= 0)
             {
@@ -50,6 +57,9 @@ public class LevelDoor : MonoBehaviour
         }
 
         eText.SetActive(false);
+
+        this.inGrahpic.transform.eulerAngles += Vector3.forward * Random.Range(0, 360);
+        this.outGraphic.transform.eulerAngles += Vector3.forward * Random.Range(0, 360);
     }
 
     // Update is called once per frame
@@ -88,6 +98,9 @@ public class LevelDoor : MonoBehaviour
             this.errorMessageTimer = 0f;
             this.text.text = "Level " + (this.LevelToLoad);
         }
+
+        this.inGrahpic.transform.eulerAngles += Vector3.forward * this.inRotateSpeed * Time.deltaTime;
+        this.outGraphic.transform.eulerAngles += Vector3.forward * this.outRotateSpeed * Time.deltaTime; 
     }
 
     private void OnTriggerEnter2D(Collider2D other)
