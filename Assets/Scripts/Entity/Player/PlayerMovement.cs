@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     public ParticleSystem doubleJumpParticel;
     private PlayerAudio playerAudio;
+
+    public GameObject GlideParticel;
     // Start is called before the first frame update
     void Start()
     {
@@ -233,11 +235,13 @@ public class PlayerMovement : MonoBehaviour
                     this.playerAudio.InAir = true;
                 }
             }
+            this.GlideParticel.SetActive(true);
             this.animator.SetBool("Glide", true);
 
         }
         else
         {
+            this.GlideParticel.SetActive(false);
             this.playerBody.gravityScale = 1f;
             this.animator.SetBool("Glide", false);
             this.playerAudio.InAir = false;
