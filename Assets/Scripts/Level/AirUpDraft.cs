@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class AirUpDraft : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class AirUpDraft : MonoBehaviour
     private bool hasLock = false;
     private static bool isLocked = false;
 
-    public bool enableSlefMade = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,18 +46,17 @@ public class AirUpDraft : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!this.enableSlefMade)
-        {
-            trySetInAirDraft(false);
-            return;
-        }
 
+        Debug.Log(this.pLayerInUpdraft);
         if(this.pLayerInUpdraft)
         {
-            if(this.playerMovement.isGlidingKeyDown())
+            if(Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
             {
+                Debug.Log(Time.timeSinceLevelLoad);
                 if(this.playerBody.velocity.y <= this.maxVelocity)
-                this.playerBody.AddForce(new Vector2(0, this.UpDraftForce), ForceMode2D.Force);
+                {
+                    this.playerBody.AddForce(new Vector2(0, this.UpDraftForce), ForceMode2D.Force);
+                }
 
                 trySetInAirDraft(true);
             }
@@ -73,6 +72,14 @@ public class AirUpDraft : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            this.pLayerInUpdraft = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
