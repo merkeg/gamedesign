@@ -26,6 +26,7 @@ public class DarknessAnimationFollow : MonoBehaviour
         //Adjust Animation Speed
         float intes = this.vignette.GetIntensity();
         intes =  Mathf.Clamp(intes, 0, 1);
-        this.animator.speed = intes;
+        float temp = 0.25f + 0.75f * intes;
+        this.animator.speed = temp;
     }
 }
