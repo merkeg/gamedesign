@@ -23,6 +23,7 @@ public class Explosion : MonoBehaviour
         {
             Debug.Log("Whoppa");
             other.gameObject.GetComponent<Entity.Damageable>().TakeDamage(this.Damage);
+            other.gameObject.GetComponent<PlayerHit>().Hit();
         }
     }
 

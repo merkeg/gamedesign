@@ -21,12 +21,6 @@ public class PlayerHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            this.Hit();
-        }
-
         if(this.hitVinette)
         {
             this._vignette.intensity.value += Time.deltaTime * this.vignetteSpeed;

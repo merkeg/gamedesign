@@ -35,6 +35,7 @@ public class Timo : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Entity.Damageable>().TakeDamage(this.Damage);
+            other.gameObject.GetComponent<PlayerHit>().Hit();
         }
 
         GameObject.Destroy(this.gameObject);
