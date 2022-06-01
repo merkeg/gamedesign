@@ -8,6 +8,7 @@ public class PlayerAudio : MonoBehaviour
     public AudioClip chute;
     public AudioClip cape;
     public AudioClip jump;
+    public AudioClip glide;
     public bool InAir { get; set; }
 
     public void playCape()
