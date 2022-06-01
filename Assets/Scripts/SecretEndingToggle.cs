@@ -13,7 +13,7 @@ public class SecretEndingToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameManager.Instance.getPesistentFeatherCount() >= 16)
+        if(GameManager.Instance.getPesistentFeatherCount() >= 15)
         {
             Collision.SetActive(false);
             SecCollision.SetActive(true);
@@ -26,5 +26,14 @@ public class SecretEndingToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If Key Shift and E are pressed
+        if (Input.GetKeyDown(KeyCode.E) && Input.GetKey(KeyCode.LeftShift))
+        {
+            Collision.SetActive(false);
+            SecCollision.SetActive(true);
+            SecFoil.SetActive(true);
+            SecFolilNoLight.SetActive(true);
+            SecLight.SetActive(true);
+        }
     }
 }
