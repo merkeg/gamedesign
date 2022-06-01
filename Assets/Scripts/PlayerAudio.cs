@@ -8,7 +8,7 @@ public class PlayerAudio : MonoBehaviour
     public AudioClip chute;
     public AudioClip cape;
     public AudioClip jump;
-    public AudioClip glide;
+    public AudioClip damage;
     public bool InAir { get; set; }
 
     public void playCape()
@@ -24,6 +24,11 @@ public class PlayerAudio : MonoBehaviour
     public void playJump()
     {
         source.PlayOneShot(jump);
+    }
+
+    public void playDamage()
+    {
+        source.PlayOneShot(damage);
     }
 
     public bool isPlaying()
