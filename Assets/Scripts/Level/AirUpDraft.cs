@@ -47,7 +47,6 @@ public class AirUpDraft : MonoBehaviour
     private void FixedUpdate()
     {
 
-        Debug.Log(this.pLayerInUpdraft);
         if(this.pLayerInUpdraft)
         {
             if(Input.GetButton("Jump") || Input.GetKey(KeyCode.LeftShift))
