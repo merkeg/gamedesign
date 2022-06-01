@@ -2463,7 +2463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3666377184243163402, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: FeatherInTHisLevel
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3666377184243163404, guid: 84606d3a4a49ab545bd92b1ef582a64d, type: 3}
       propertyPath: m_Name
