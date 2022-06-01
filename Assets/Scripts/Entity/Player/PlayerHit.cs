@@ -14,9 +14,11 @@ public class PlayerHit : MonoBehaviour
     private bool hitVinette = false;
 
     private Vector3 end = new Vector3(8, 8, 1);
+    private PlayerAudio playerAudio;
     // Start is called before the first frame update
     void Start()
     {
+        this.playerAudio = this.transform.GetChild(9).GetComponent<PlayerAudio>();
         this.startSize = Mask.localScale;
     }
 
@@ -57,6 +59,7 @@ public class PlayerHit : MonoBehaviour
     public void Hit()
     {
         //Play Hit Sound
+        this.playerAudio.playDamage();
 
         this.hitVinette = true;
     }
