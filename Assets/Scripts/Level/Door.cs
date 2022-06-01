@@ -17,10 +17,14 @@ public class Door : MonoBehaviour
     public GameObject eText;
     private float EelaspedTime = 0;
     private float ETimeToShow = 2;
+
+    public Sprite mapSprite;
+    private Map map;
     // Start is called before the first frame update
     void Start()
     {
         this.rendere = this.gameObject.GetComponent<SpriteRenderer>();
+        this.map = GameObject.Find("MapContainer").transform.GetChild(0).GetComponent<Map>();
     }
 
     // Update is called once per frame
@@ -34,6 +38,11 @@ public class Door : MonoBehaviour
 
         if(this.PlayerIsAtTheDoor)
         {
+            if(Input.GetKeyDown(KeyCode.M) && !this.map.isOpen)
+            {
+                this.map.Open(this.mapSprite);
+            }
+
             this.EelaspedTime += Time.deltaTime;
             if(Input.GetKeyDown(KeyCode.E))
             {
@@ -74,6 +83,10 @@ public class Door : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             this.PlayerIsAtTheDoor = false;
+            if(this.map.isOpen)
+            {
+                this.map.Close();
+            }
         }
     }
 }

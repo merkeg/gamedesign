@@ -34,7 +34,7 @@ public class CheckPoint : MonoBehaviour
         {
             this.vignette.AddVignetteValue(-1f);
 
-            if(Input.GetKeyDown(KeyCode.E) && !this.map.isOpen)
+            if(Input.GetKeyDown(KeyCode.M) && !this.map.isOpen)
             {
                 this.map.Open(this.mapSprite);
             }   
