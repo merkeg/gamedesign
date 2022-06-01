@@ -69,3 +69,6 @@ TagManager:
   - name: DarknessForeGround
     uniqueID: 1563293525
     locked: 0
+  - name: Hit
+    uniqueID: 1419422619
+    locked: 0

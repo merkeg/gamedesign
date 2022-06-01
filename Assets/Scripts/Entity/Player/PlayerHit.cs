@@ -6,40 +6,65 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerHit : MonoBehaviour
 {
-    public VolumeProfile VolumeProfile;
-    private Vignette _vignette;
-
+    public RectTransform Mask;
+    public GameObject Vin;
+    private Vector3 startSize;
+    private float t = 0;
     public float vignetteSpeed = 5;
     private bool hitVinette = false;
+
+    private Vector3 end;
+    private PlayerAudio playerAudio;
     // Start is called before the first frame update
     void Start()
     {
-        VolumeProfile.TryGet<Vignette>(out _vignette);
-        _vignette.intensity.overrideState = true;
+        this.playerAudio = this.transform.GetChild(9).GetComponent<PlayerAudio>();
+        this.startSize = Mask.localScale;
+
+        this.end = startSize * 2;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if(this.hitVinette)
         {
-            this._vignette.intensity.value += Time.deltaTime * this.vignetteSpeed;
+            t += Time.deltaTime * this.vignetteSpeed;
 
-            if(this._vignette.intensity.value >= 1)
+            if(t >= 1)
             {
                 this.hitVinette = false;
             }
         }
         else
         {
-            this._vignette.intensity.value -= Time.deltaTime * this.vignetteSpeed;
+            t -= Time.deltaTime * this.vignetteSpeed;
         }
+
+        if(t < 0)
+        {
+            t = 0;
+        }
+
+        if(t == 0)
+        {
+            this.Vin.SetActive(false);
+        }
+        else
+        {
+            this.Vin.SetActive(true);
+        }
+        Debug.Log(t);
+        this.Mask.localScale = Vector3.Lerp(end, startSize, t);
     }
 
     public void Hit()
     {
         //Play Hit Sound
+        this.playerAudio.playDamage();
 
+        t = 1;
         this.hitVinette = true;
     }
 }

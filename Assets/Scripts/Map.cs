@@ -31,7 +31,7 @@ public class Map : MonoBehaviour
         {
             t += Time.deltaTime * this.Tscale;
             this.image.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, t);
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.M))
             {
                 this.Close();
             }
