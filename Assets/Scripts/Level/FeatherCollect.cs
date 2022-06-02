@@ -7,6 +7,8 @@ public class FeatherCollect : MonoBehaviour
     // Start is called before the first frame update
 
     public int FeatherId = -1;
+    public AudioClip PickupSound;
+    public float PickupSoundScale = 0.3f;
     void Start()
     {
         if(this.FeatherId < 0)
@@ -27,6 +29,7 @@ public class FeatherCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<PlayerAudio>().source.PlayOneShot(PickupSound, PickupSoundScale);
             GameManager.Instance.CollectFeather(this.FeatherId);
             GameObject.Destroy(this.gameObject);
         }

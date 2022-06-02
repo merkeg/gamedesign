@@ -8,6 +8,8 @@ public class SunScript : MonoBehaviour
 
     public float RespawnTime = 30f;
     private VignetteInterface vignette;
+    public AudioClip PickupSound;
+    public float PickupSoundScale = 0.3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class SunScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<PlayerAudio>().source.PlayOneShot(PickupSound, PickupSoundScale);
             GameManager.Instance.CollectSun(this.SunID);
             this.vignette.AddVignetteValue(-0.75f);
             Invoke("Reactivate", this.RespawnTime);

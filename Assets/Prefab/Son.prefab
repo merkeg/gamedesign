@@ -66,6 +66,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SunID: -1
   RespawnTime: 30
+  PickupSound: {fileID: 8300000, guid: fa6ab10aa3329ee48be7f47918d840a9, type: 3}
+  PickupSoundScale: 0.3
 --- !u!1 &2165030764822267406
 GameObject:
   m_ObjectHideFlags: 0
