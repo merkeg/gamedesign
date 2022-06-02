@@ -55,7 +55,7 @@ public class PlayerHit : MonoBehaviour
         {
             this.Vin.SetActive(true);
         }
-        Debug.Log(t);
+        // Debug.Log(t);
         this.Mask.localScale = Vector3.Lerp(end, startSize, t);
     }
 
