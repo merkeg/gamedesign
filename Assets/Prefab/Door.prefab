@@ -181,7 +181,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.4850649, g: 0.2460395, b: 0.9150943, a: 1}
-  m_Intensity: 1.76
+  m_Intensity: 1.5
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: a9ac23d9a9b6f6d3f599dfbe55f72d5da9c776f5
   m_LightCookieSprite: {fileID: 0}
@@ -438,6 +438,7 @@ MonoBehaviour:
   onSprite: {fileID: 21300000, guid: d49c25dadb024ad49b4b2987f326cfc5, type: 3}
   text: {fileID: 1943167378619005312}
   eText: {fileID: 1385659906681031426}
+  mapSprite: {fileID: 0}
 --- !u!114 &6966422793287348788
 MonoBehaviour:
   m_ObjectHideFlags: 0
