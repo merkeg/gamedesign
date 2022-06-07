@@ -26,14 +26,6 @@ public class SecretEndingToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If Key Shift and E are pressed
-        if (Input.GetKeyDown(KeyCode.E) && Input.GetKey(KeyCode.LeftShift))
-        {
-            Collision.SetActive(false);
-            SecCollision.SetActive(true);
-            SecFoil.SetActive(true);
-            SecFolilNoLight.SetActive(true);
-            SecLight.SetActive(true);
-        }
+
     }
 }

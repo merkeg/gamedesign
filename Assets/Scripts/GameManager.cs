@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     {
         if(this.levelSunList.Contains(sunId))
         {
-            GameObject.Destroy(sun);
+            //GameObject.Destroy(sun);
         }
     }
 
